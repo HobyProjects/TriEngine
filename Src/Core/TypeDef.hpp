@@ -10,6 +10,24 @@
 #pragma once
 
 /**
+ * @brief Basic type definitions
+ *
+ * These are basic type definitions used to represent fundamental data types
+ * in the engine. They are used to abstract away the underlying types, so that
+ * the engine can be compiled on different platforms.
+ */
+
+typedef int Int32;                  // A 32-bit signed integer
+typedef unsigned int UInt32;        // A 32-bit unsigned integer
+typedef unsigned short UInt16;      // A 16-bit unsigned integer
+typedef unsigned char UInt8;        // An 8-bit unsigned integer
+typedef char Int8;                  // An 8-bit signed integer
+typedef float Float32;              // A 32-bit floating-point number
+typedef double Float64;             // A 64-bit floating-point number
+
+//==============================================================================
+
+/**
  * @brief A type definition for a vertex buffer ID
  *
  * This type definition is used to identify a vertex buffer in the engine. It

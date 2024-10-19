@@ -18,7 +18,7 @@ namespace TE::Events
              * @brief Constructor.
              * @param[in] button The button that was pressed.
              */
-            MouseButtonPressEvent(uint32_t button) : m_Button(button) {}
+            MouseButtonPressEvent(UInt32 button) : m_Button(button) {}
 
             /**
              * @brief Destructor.
@@ -29,7 +29,7 @@ namespace TE::Events
              * @brief Gets the button that was pressed.
              * @return The button that was pressed.
              */
-            uint32_t GetMouseButton() const
+            UInt32 GetMouseButton() const
             {
                 return m_Button;
             }
@@ -50,7 +50,7 @@ namespace TE::Events
             /**
              * @brief The button that was pressed.
              */
-            uint32_t m_Button;
+            UInt32 m_Button;
     };
 
 
@@ -68,14 +68,14 @@ namespace TE::Events
              * @brief Constructor.
              * @param[in] button The button that was released.
              */
-            MouseButtonReleaseEvent(uint32_t button) : m_Button(button) {}
+            MouseButtonReleaseEvent(UInt32 button) : m_Button(button) {}
             virtual ~MouseButtonReleaseEvent() = default;
 
             /**
              * @brief Gets the button that was released.
              * @return The button that was released.
              */
-            uint32_t GetMouseButton() const
+            UInt32 GetMouseButton() const
             {
                 return m_Button;
             }
@@ -114,7 +114,7 @@ namespace TE::Events
              * @param[in] posX The new position of the mouse cursor on the x-axis.
              * @param[in] posY The new position of the mouse cursor on the y-axis.
              */
-            MouseCursorPosChangeEvent(double posX, double posY) : m_PosX(posX), m_PosY(posY) {}
+            MouseCursorPosChangeEvent(Float64 posX, Float64 posY) : m_PosX(posX), m_PosY(posY) {}
 
             /**
              * @brief Destructor.
@@ -125,13 +125,13 @@ namespace TE::Events
              * @brief Gets the new position of the mouse cursor on the x-axis.
              * @return The new position of the mouse cursor on the x-axis.
              */
-            double GetMousePosX() const { return m_PosX; }
+            Float64 GetMousePosX() const { return m_PosX; }
 
             /**
              * @brief Gets the new position of the mouse cursor on the y-axis.
              * @return The new position of the mouse cursor on the y-axis.
              */
-            double GetMousePosY() const { return m_PosY; }
+            Float64 GetMousePosY() const { return m_PosY; }
 
             /**
              * @brief Gets the category of the event.
@@ -149,12 +149,12 @@ namespace TE::Events
             /**
              * @brief The new position of the mouse cursor on the x-axis.
              */
-            double m_PosX;
+            Float64 m_PosX;
 
             /**
              * @brief The new position of the mouse cursor on the y-axis.
              */
-            double m_PosY;
+            Float64 m_PosY;
     };
 
     /**
@@ -171,7 +171,7 @@ namespace TE::Events
              * @param[in] offsetX The offset of the scroll wheel on the X-axis.
              * @param[in] offsetY The offset of the scroll wheel on the Y-axis.
              */
-            MouseScrollEvent(double offsetX, double offsetY) : m_OffsetX(offsetX), m_OffsetY(offsetY) {}
+            MouseScrollEvent(Float64 offsetX, Float64 offsetY) : m_OffsetX(offsetX), m_OffsetY(offsetY) {}
 
             /**
              * @brief Destructor.
@@ -182,13 +182,13 @@ namespace TE::Events
              * @brief Gets the offset of the scroll wheel on the X-axis.
              * @return The offset of the scroll wheel on the X-axis.
              */
-            double GetMouseScrollOffsetX() const { return m_OffsetX; }
+            Float64 GetMouseScrollOffsetX() const { return m_OffsetX; }
 
             /**
              * @brief Gets the offset of the scroll wheel on the Y-axis.
              * @return The offset of the scroll wheel on the Y-axis.
              */
-            double GetMouseScrollOffsetY() const { return m_OffsetY; }
+            Float64 GetMouseScrollOffsetY() const { return m_OffsetY; }
 
             /**
              * @brief Gets the category of the event.
@@ -203,8 +203,8 @@ namespace TE::Events
             EVENT_CLASS_TYPE(EventType::MouseWheelEvent);
 
         private:
-            double m_OffsetX; /**< The offset of the scroll wheel on the X-axis. */
-            double m_OffsetY; /**< The offset of the scroll wheel on the Y-axis. */
+            Float64 m_OffsetX; /**< The offset of the scroll wheel on the X-axis. */
+            Float64 m_OffsetY; /**< The offset of the scroll wheel on the Y-axis. */
     };
 
     /**

@@ -57,10 +57,14 @@ set(
         # APIS - OPENGL
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/OpenGL.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Buffers.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Context.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Debug.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Renderer.hpp
 
         # Renderer
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Renderer.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Buffers.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Context.hpp
 )
 
 set(
@@ -74,10 +78,12 @@ set(
 
         # APIS - OPENGL
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Buffers.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Context.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Debug.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Renderer.cpp
 
         # Renderer
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Renderer.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Buffers.cpp
 
 )
 

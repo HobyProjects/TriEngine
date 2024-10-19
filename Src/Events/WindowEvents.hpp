@@ -42,7 +42,7 @@ namespace TE::Events
              * \param width The new width of the application window.
              * \param height The new height of the application window.
              */
-            AppWindowResizeEvent(uint32_t width, uint32_t height) : m_Width(width), m_Height(height) {}
+            AppWindowResizeEvent(UInt32 width, UInt32 height) : m_Width(width), m_Height(height) {}
 
             /**
              * \brief Virtual destructor for AppWindowResizeEvent.
@@ -57,18 +57,18 @@ namespace TE::Events
              * 
              * \return The new width of the application window.
              */
-            uint32_t GetWidth() const { return m_Width; }
+            UInt32 GetWidth() const { return m_Width; }
 
             /**
              * \brief Get the new height of the application window.
              * 
              * \return The new height of the application window.
              */
-            uint32_t GetHeight() const { return m_Height; }
+            UInt32 GetHeight() const { return m_Height; }
 
         private:
-            uint32_t m_Width{0}; ///< The new width of the application window.
-            uint32_t m_Height{0}; ///< The new height of the application window.
+            UInt32 m_Width{0}; ///< The new width of the application window.
+            UInt32 m_Height{0}; ///< The new height of the application window.
     };
 
     /**
@@ -85,7 +85,7 @@ namespace TE::Events
              * \param width The new width of the frame of the application window.
              * \param height The new height of the frame of the application window.
              */
-            AppWindowFrameResizeEvent(uint32_t width, uint32_t height) : m_Width(width), m_Height(height) {}
+            AppWindowFrameResizeEvent(UInt32 width, UInt32 height) : m_Width(width), m_Height(height) {}
 
             /**
              * \brief Virtual destructor for AppWindowFrameResizeEvent.
@@ -100,18 +100,18 @@ namespace TE::Events
              * 
              * \return The new width of the frame of the application window.
              */
-            uint32_t GetWidth() const { return m_Width; }
+            UInt32 GetWidth() const { return m_Width; }
 
             /**
              * \brief Get the new height of the frame of the application window.
              * 
              * \return The new height of the frame of the application window.
              */
-            uint32_t GetHeight() const { return m_Height; }
+            UInt32 GetHeight() const { return m_Height; }
 
         private:
-            uint32_t m_Width{0}; ///< The new width of the frame of the application window.
-            uint32_t m_Height{0}; ///< The new height of the frame of the application window.
+            UInt32 m_Width{0}; ///< The new width of the frame of the application window.
+            UInt32 m_Height{0}; ///< The new height of the frame of the application window.
     };
 
     /**
@@ -129,7 +129,7 @@ namespace TE::Events
              * @param x The new x-coordinate of the application window.
              * @param y The new y-coordinate of the application window.
              */
-            AppWindowPosChangeEvent(int32_t x, int32_t y) : m_X(x), m_Y(y) {}
+            AppWindowPosChangeEvent(UInt32 x, UInt32 y) : m_X(x), m_Y(y) {}
 
             /**
              * @brief Virtual destructor for AppWindowPosChangeEvent.
@@ -144,18 +144,18 @@ namespace TE::Events
              * 
              * @return The new x-coordinate of the application window.
              */
-            int32_t GetX() const { return m_X; }
+            UInt32 GetX() const { return m_X; }
 
             /**
              * @brief Get the new y-coordinate of the application window.
              * 
              * @return The new y-coordinate of the application window.
              */
-            int32_t GetY() const { return m_Y; }
+            UInt32 GetY() const { return m_Y; }
 
         private:
-            int32_t m_X{0}; ///< The new x-coordinate of the application window.
-            int32_t m_Y{0}; ///< The new y-coordinate of the application window.
+            UInt32 m_X{0}; ///< The new x-coordinate of the application window.
+            UInt32 m_Y{0}; ///< The new y-coordinate of the application window.
     };
 
     /**
