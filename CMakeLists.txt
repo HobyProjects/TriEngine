@@ -67,6 +67,7 @@ set(
         # APIS - GLFW
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_Window.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_EventsReceiver.hpp
 
         # Renderer
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Renderer.hpp
@@ -89,10 +90,10 @@ set(
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Context.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Debug.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Renderer.cpp
-
-        
+  
         # APIS - GLFW
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_Window.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_EventsReceiver.cpp
 
         # Renderer
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Renderer.cpp

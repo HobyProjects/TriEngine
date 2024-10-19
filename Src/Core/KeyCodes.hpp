@@ -1,138 +1,147 @@
 #pragma once
 
-#define GLFW_INCLUDE_NONE
-#include <GLFW/glfw3.h>
-#ifdef APIENTRY
-#undef APIENTRY
-#endif
+#include "TypeDef.hpp"
 
 namespace TE::Core 
 {
-    enum KeyCodes : int32_t 
+    enum KeyCodes : Int32
     {
         // Number keys
-        KEY_NUM_0 = GLFW_KEY_0,
-        KEY_NUM_1 = GLFW_KEY_1,
-        KEY_NUM_2 = GLFW_KEY_2,
-        KEY_NUM_3 = GLFW_KEY_3,
-        KEY_NUM_4 = GLFW_KEY_4,
-        KEY_NUM_5 = GLFW_KEY_5,
-        KEY_NUM_6 = GLFW_KEY_6,
-        KEY_NUM_7 = GLFW_KEY_7,
-        KEY_NUM_8 = GLFW_KEY_8,
-        KEY_NUM_9 = GLFW_KEY_9,
+        KEY_NUM_0 = 48,
+        KEY_NUM_1 = 49,
+        KEY_NUM_2 = 50,
+        KEY_NUM_3 = 51,
+        KEY_NUM_4 = 52,
+        KEY_NUM_5 = 53,
+        KEY_NUM_6 = 54,
+        KEY_NUM_7 = 55,
+        KEY_NUM_8 = 56,
+        KEY_NUM_9 = 57,
 
         // Alphabetic keys
-        KEY_A = GLFW_KEY_A,
-        KEY_B = GLFW_KEY_B,
-        KEY_C = GLFW_KEY_C,
-        KEY_D = GLFW_KEY_D,
-        KEY_E = GLFW_KEY_E,
-        KEY_F = GLFW_KEY_F,
-        KEY_G = GLFW_KEY_G,
-        KEY_H = GLFW_KEY_H,
-        KEY_I = GLFW_KEY_I,
-        KEY_J = GLFW_KEY_J,
-        KEY_K = GLFW_KEY_K,
-        KEY_L = GLFW_KEY_L,
-        KEY_M = GLFW_KEY_M,
-        KEY_N = GLFW_KEY_N,
-        KEY_O = GLFW_KEY_O,
-        KEY_P = GLFW_KEY_P,
-        KEY_Q = GLFW_KEY_Q,
-        KEY_R = GLFW_KEY_R,
-        KEY_S = GLFW_KEY_S,
-        KEY_T = GLFW_KEY_T,
-        KEY_U = GLFW_KEY_U,
-        KEY_V = GLFW_KEY_V,
-        KEY_W = GLFW_KEY_W,
-        KEY_X = GLFW_KEY_X,
-        KEY_Y = GLFW_KEY_Y,
-        KEY_Z = GLFW_KEY_Z,
+        KEY_A = 65,
+        KEY_B = 66,
+        KEY_C = 67,
+        KEY_D = 68,
+        KEY_E = 69,
+        KEY_F = 70,
+        KEY_G = 71,
+        KEY_H = 72,
+        KEY_I = 73,
+        KEY_J = 74,
+        KEY_K = 75,
+        KEY_L = 76,
+        KEY_M = 77,
+        KEY_N = 78,
+        KEY_O = 79,
+        KEY_P = 80,
+        KEY_Q = 81,
+        KEY_R = 82,
+        KEY_S = 83,
+        KEY_T = 84,
+        KEY_U = 85,
+        KEY_V = 86,
+        KEY_W = 87,
+        KEY_X = 88,
+        KEY_Y = 89,
+        KEY_Z = 90,
 
         // Function keys
-        KEY_F1  = GLFW_KEY_F1,
-        KEY_F2  = GLFW_KEY_F2,
-        KEY_F3  = GLFW_KEY_F3,
-        KEY_F4  = GLFW_KEY_F4,
-        KEY_F5  = GLFW_KEY_F5,
-        KEY_F6  = GLFW_KEY_F6,
-        KEY_F7  = GLFW_KEY_F7,
-        KEY_F8  = GLFW_KEY_F8,
-        KEY_F9  = GLFW_KEY_F9,
-        KEY_F10 = GLFW_KEY_F10,
-        KEY_F11 = GLFW_KEY_F11,
-        KEY_F12 = GLFW_KEY_F12,
+        KEY_F1  = 290,
+        KEY_F2  = 291,
+        KEY_F3  = 292,
+        KEY_F4  = 293,
+        KEY_F5  = 294,
+        KEY_F6  = 295,
+        KEY_F7  = 296,
+        KEY_F8  = 297,
+        KEY_F9  = 298,
+        KEY_F10 = 299,
+        KEY_F11 = 300,
+        KEY_F12 = 301,
+        KEY_F13 = 302,
+        KEY_F14 = 303,
+        KEY_F15 = 304,
+        KEY_F16 = 305,
+        KEY_F17 = 306,
+        KEY_F18 = 307,
+        KEY_F19 = 308,
+        KEY_F20 = 309,
+        KEY_F21 = 310,
+        KEY_F22 = 311,
+        KEY_F23 = 312,
+        KEY_F24 = 313,
+        KEY_F25 = 314,
 
         // Special keys
-        KEY_SEMICOLON       = GLFW_KEY_SEMICOLON,
-        KEY_EQUAL           = GLFW_KEY_EQUAL,
-        KEY_SPACE           = GLFW_KEY_SPACE,
-        KEY_ESCAPE          = GLFW_KEY_ESCAPE,
-        KEY_APOSTROPHE      = GLFW_KEY_APOSTROPHE,
-        KEY_COMMA           = GLFW_KEY_COMMA,
-        KEY_MINUS           = GLFW_KEY_MINUS,
-        KEY_PERIOD          = GLFW_KEY_PERIOD,
-        KEY_SLASH           = GLFW_KEY_SLASH,
-        KEY_LEFT_BRACKET    = GLFW_KEY_LEFT_BRACKET,
-        KEY_BACKSLASH       = GLFW_KEY_BACKSLASH,
-        KEY_RIGHT_BRACKET   = GLFW_KEY_RIGHT_BRACKET,
-        KEY_GRAVE_ACCENT    = GLFW_KEY_GRAVE_ACCENT,
-        KEY_WORLD_1         = GLFW_KEY_WORLD_1,
-        KEY_WORLD_2         = GLFW_KEY_WORLD_2,
-        KEY_ENTER           = GLFW_KEY_ENTER,
-        KEY_TAB             = GLFW_KEY_TAB,
-        KEY_BACKSPACE       = GLFW_KEY_BACKSPACE,
-        KEY_INSERT          = GLFW_KEY_INSERT,
-        KEY_DELETE          = GLFW_KEY_DELETE,
-        KEY_RIGHT           = GLFW_KEY_RIGHT,
-        KEY_LEFT            = GLFW_KEY_LEFT,
-        KEY_DOWN            = GLFW_KEY_DOWN,
-        KEY_UP              = GLFW_KEY_UP,
-        KEY_PAGE_UP         = GLFW_KEY_PAGE_UP,
-        KEY_PAGE_DOWN       = GLFW_KEY_PAGE_DOWN,
-        KEY_HOME            = GLFW_KEY_HOME,
-        KEY_END             = GLFW_KEY_END,
-        KEY_CAPS_LOCK       = GLFW_KEY_CAPS_LOCK,
-        KEY_SCROLL_LOCK     = GLFW_KEY_SCROLL_LOCK,
-        KEY_NUM_LOCK        = GLFW_KEY_NUM_LOCK,
-        KEY_PRINT_SCREEN    = GLFW_KEY_PRINT_SCREEN,
-        KEY_PAUSE           = GLFW_KEY_PAUSE,
+        KEY_SEMICOLON       = 59,
+        KEY_EQUAL           = 61,
+        KEY_SPACE           = 32,
+        KEY_ESCAPE          = 256,
+        KEY_APOSTROPHE      = 39,
+        KEY_COMMA           = 44,
+        KEY_MINUS           = 45,
+        KEY_PERIOD          = 46,
+        KEY_SLASH           = 47,
+        KEY_LEFT_BRACKET    = 91,
+        KEY_BACKSLASH       = 92,
+        KEY_RIGHT_BRACKET   = 93,
+        KEY_GRAVE_ACCENT    = 96,
+        KEY_WORLD_1         = 161,
+        KEY_WORLD_2         = 162,
+        KEY_ENTER           = 257,
+        KEY_TAB             = 258,
+        KEY_BACKSPACE       = 259,
+        KEY_INSERT          = 260,
+        KEY_DELETE          = 261,
+        KEY_RIGHT           = 262,
+        KEY_LEFT            = 263,
+        KEY_DOWN            = 264,
+        KEY_UP              = 265,
+        KEY_PAGE_UP         = 266,
+        KEY_PAGE_DOWN       = 267,
+        KEY_HOME            = 268,
+        KEY_END             = 269,
+        KEY_CAPS_LOCK       = 280,
+        KEY_SCROLL_LOCK     = 281,
+        KEY_NUM_LOCK        = 282,
+        KEY_PRINT_SCREEN    = 283,
+        KEY_PAUSE           = 284,
 
         // Keypad keys
-        KEY_KP_0 = GLFW_KEY_KP_0,
-        KEY_KP_1 = GLFW_KEY_KP_1,
-        KEY_KP_2 = GLFW_KEY_KP_2,
-        KEY_KP_3 = GLFW_KEY_KP_3,
-        KEY_KP_4 = GLFW_KEY_KP_4,
-        KEY_KP_5 = GLFW_KEY_KP_5,
-        KEY_KP_6 = GLFW_KEY_KP_6,
-        KEY_KP_7 = GLFW_KEY_KP_7,
-        KEY_KP_8 = GLFW_KEY_KP_8,
-        KEY_KP_9 = GLFW_KEY_KP_9,
+        KEY_KP_0 = 320,
+        KEY_KP_1 = 321,
+        KEY_KP_2 = 322,
+        KEY_KP_3 = 323,
+        KEY_KP_4 = 324,
+        KEY_KP_5 = 325,
+        KEY_KP_6 = 326,
+        KEY_KP_7 = 327,
+        KEY_KP_8 = 328,
+        KEY_KP_9 = 329,
 
-        KEY_KP_DECIMAL      = GLFW_KEY_KP_DECIMAL,
-        KEY_KP_DIVIDE       = GLFW_KEY_KP_DIVIDE,
-        KEY_KP_MULTIPLY     = GLFW_KEY_KP_MULTIPLY,
-        KEY_KP_SUBTRACT     = GLFW_KEY_KP_SUBTRACT,
-        KEY_KP_ADD          = GLFW_KEY_KP_ADD,
-        KEY_KP_ENTER        = GLFW_KEY_KP_ENTER,
-        KEY_KP_EQUAL        = GLFW_KEY_KP_EQUAL,
+        KEY_KP_DECIMAL      = 330,
+        KEY_KP_DIVIDE       = 331,
+        KEY_KP_MULTIPLY     = 332,
+        KEY_KP_SUBTRACT     = 333,
+        KEY_KP_ADD          = 334,
+        KEY_KP_ENTER        = 335,
+        KEY_KP_EQUAL        = 336,
 
         // Modifier keys
-        KEY_LEFT_SHIFT      = GLFW_KEY_LEFT_SHIFT,
-        KEY_LEFT_CONTROL    = GLFW_KEY_LEFT_CONTROL,
-        KEY_LEFT_ALT        = GLFW_KEY_LEFT_ALT,
-        KEY_LEFT_SUPER      = GLFW_KEY_LEFT_SUPER,
+        KEY_LEFT_SHIFT      = 340,
+        KEY_LEFT_CONTROL    = 341,
+        KEY_LEFT_ALT        = 342,
+        KEY_LEFT_SUPER      = 343,
 
-        KEY_RIGHT_SHIFT     = GLFW_KEY_RIGHT_SHIFT,
-        KEY_RIGHT_CONTROL   = GLFW_KEY_RIGHT_CONTROL,
-        KEY_RIGHT_ALT       = GLFW_KEY_RIGHT_ALT,
-        KEY_RIGHT_SUPER     = GLFW_KEY_RIGHT_SUPER,
+        KEY_RIGHT_SHIFT     = 344,
+        KEY_RIGHT_CONTROL   = 345,
+        KEY_RIGHT_ALT       = 346,
+        KEY_RIGHT_SUPER     = 347,
 
         // Other keys
-        KEY_MENU            = GLFW_KEY_MENU,
-        KEY_UNKNOWN         = GLFW_KEY_UNKNOWN
+        KEY_MENU            = 348,
+        KEY_UNKNOWN         = 0
 	};
 
     /**
@@ -140,11 +149,11 @@ namespace TE::Core
      * 
      * This enum defines the possible states of a key, such as pressed, released, or repeated.
      */
-    enum KeyState : uint32_t 
+    enum KeyState : Int32
     {
-        KEY_PRESSED     = GLFW_PRESS,    ///< The key is pressed.
-        KEY_RELEASED    = GLFW_RELEASE,  ///< The key is released.
-        KEY_REPEAT      = GLFW_REPEAT    ///< The key is being repeated.
+        KEY_PRESSED     = 1,  ///< The key is pressed.
+        KEY_RELEASED    = 0,  ///< The key is released.
+        KEY_REPEAT      = 2   ///< The key is being repeated.
     };
 
     /**
@@ -152,20 +161,20 @@ namespace TE::Core
      * 
      * This enum defines the different mouse buttons that can be used in the framework.
      */
-    enum MouseButton : uint32_t 
+    enum MouseButton : Int32 
     {
         /**
          * @brief The left mouse button.
          */
-        MOUSE_BUTTON_LEFT   = GLFW_MOUSE_BUTTON_LEFT,
+        MOUSE_BUTTON_LEFT   = 0,
         /**
          * @brief The right mouse button.
          */
-        MOUSE_BUTTON_RIGHT  = GLFW_MOUSE_BUTTON_RIGHT,
+        MOUSE_BUTTON_RIGHT  = 1,
         /**
          * @brief The middle mouse button.
          */
-        MOUSE_BUTTON_MIDDLE = GLFW_MOUSE_BUTTON_MIDDLE
+        MOUSE_BUTTON_MIDDLE = 2
     };
 
     /**
@@ -173,104 +182,9 @@ namespace TE::Core
      * 
      * This enum defines the possible states of a mouse button, such as pressed or released.
      */
-    enum MouseButtonState : uint32_t
+    enum MouseButtonState : Int32
     {
-        MOUSE_BUTTON_PRESSED     = GLFW_PRESS,    ///< The mouse button is pressed.
-        MOUSE_BUTTON_RELEASED    = GLFW_RELEASE   ///< The mouse button is released.
+        MOUSE_BUTTON_PRESSED     = 1,    ///< The mouse button is pressed.
+        MOUSE_BUTTON_RELEASED    = 0   ///< The mouse button is released.
     };
-
-    /**
-     * @brief Converts a GLFW key code to a KeyCode enum.
-     * 
-     * This function takes a GLFW key code and returns the corresponding KeyCode enum value.
-     * @param key The GLFW key code to convert.
-     * @return The KeyCode enum value corresponding to the given GLFW key code.
-     */
-    inline KeyCodes GetKeyCode(int key)
-    {
-        switch(key) 
-        {
-            // Alphabetic keys
-            case GLFW_KEY_A: return KEY_A;
-            case GLFW_KEY_B: return KEY_B;
-            case GLFW_KEY_C: return KEY_C;
-            case GLFW_KEY_D: return KEY_D;
-            case GLFW_KEY_E: return KEY_E;
-            case GLFW_KEY_F: return KEY_F;
-            case GLFW_KEY_G: return KEY_G;
-            case GLFW_KEY_H: return KEY_H;
-            case GLFW_KEY_I: return KEY_I;
-            case GLFW_KEY_J: return KEY_J;
-            case GLFW_KEY_K: return KEY_K;
-            case GLFW_KEY_L: return KEY_L;
-            case GLFW_KEY_M: return KEY_M;
-            case GLFW_KEY_N: return KEY_N;
-            case GLFW_KEY_O: return KEY_O;
-            case GLFW_KEY_P: return KEY_P;
-            case GLFW_KEY_Q: return KEY_Q;
-            case GLFW_KEY_R: return KEY_R;
-            case GLFW_KEY_S: return KEY_S;
-            case GLFW_KEY_T: return KEY_T;
-            case GLFW_KEY_U: return KEY_U;
-            case GLFW_KEY_V: return KEY_V;
-            case GLFW_KEY_W: return KEY_W;
-            case GLFW_KEY_X: return KEY_X;
-            case GLFW_KEY_Y: return KEY_Y;
-            case GLFW_KEY_Z: return KEY_Z;
-
-            // Function keys
-            case GLFW_KEY_F1: return KEY_F1;
-            case GLFW_KEY_F2: return KEY_F2;
-            case GLFW_KEY_F3: return KEY_F3;
-            case GLFW_KEY_F4: return KEY_F4;
-            case GLFW_KEY_F5: return KEY_F5;
-            case GLFW_KEY_F6: return KEY_F6;
-            case GLFW_KEY_F7: return KEY_F7;
-            case GLFW_KEY_F8: return KEY_F8;
-            case GLFW_KEY_F9: return KEY_F9;
-            case GLFW_KEY_F10: return KEY_F10;
-            case GLFW_KEY_F11: return KEY_F11;
-            case GLFW_KEY_F12: return KEY_F12;
-
-            // Number keys
-            case GLFW_KEY_0: return KEY_NUM_0;
-            case GLFW_KEY_1: return KEY_NUM_1;
-            case GLFW_KEY_2: return KEY_NUM_2;
-            case GLFW_KEY_3: return KEY_NUM_3;
-            case GLFW_KEY_4: return KEY_NUM_4;
-            case GLFW_KEY_5: return KEY_NUM_5;
-            case GLFW_KEY_6: return KEY_NUM_6;
-            case GLFW_KEY_7: return KEY_NUM_7;
-            case GLFW_KEY_8: return KEY_NUM_8;
-            case GLFW_KEY_9: return KEY_NUM_9;
-
-            // Modifier keys
-            case GLFW_KEY_LEFT_SHIFT: return KEY_LEFT_SHIFT;
-            case GLFW_KEY_RIGHT_SHIFT: return KEY_RIGHT_SHIFT;
-            case GLFW_KEY_LEFT_CONTROL: return KEY_LEFT_CONTROL;
-            case GLFW_KEY_RIGHT_CONTROL: return KEY_RIGHT_CONTROL;
-            case GLFW_KEY_LEFT_ALT: return KEY_LEFT_ALT;
-            case GLFW_KEY_RIGHT_ALT: return KEY_RIGHT_ALT;
-
-            // Other keys
-            case GLFW_KEY_SPACE: return KEY_SPACE;
-            case GLFW_KEY_ENTER: return KEY_ENTER;
-            case GLFW_KEY_ESCAPE: return KEY_ESCAPE;
-            case GLFW_KEY_TAB: return KEY_TAB;
-            case GLFW_KEY_BACKSPACE: return KEY_BACKSPACE;
-            case GLFW_KEY_INSERT: return KEY_INSERT;
-            case GLFW_KEY_DELETE: return KEY_DELETE;
-            case GLFW_KEY_HOME: return KEY_HOME;
-            case GLFW_KEY_END: return KEY_END;
-            case GLFW_KEY_PAGE_UP: return KEY_PAGE_UP;
-            case GLFW_KEY_PAGE_DOWN: return KEY_PAGE_DOWN;
-            case GLFW_KEY_LEFT: return KEY_LEFT;
-            case GLFW_KEY_RIGHT: return KEY_RIGHT;
-            case GLFW_KEY_UP: return KEY_UP;
-            case GLFW_KEY_DOWN: return KEY_DOWN;
-            case GLFW_KEY_MENU: return KEY_MENU;
-            default: return KEY_UNKNOWN;
-        }
-    }
-
 }
