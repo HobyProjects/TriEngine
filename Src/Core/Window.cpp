@@ -43,6 +43,11 @@ namespace TE::Core
 
         m_Specification.Title = title;
 
+        #if defined(TRIMANA_DEBUG)
+			if (TE::Renderer::Renderer::GetAPI() == TE::Renderer::RendererAPI::OpenGL)
+				glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
+		#endif
+
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
         glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_API);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
@@ -66,24 +71,8 @@ namespace TE::Core
             glfwSetWindowSizeLimits(m_NativeWindow, m_Specification.MinWidth, m_Specification.MinHeight, GLFW_DONT_CARE, GLFW_DONT_CARE);
             glfwGetFramebufferSize(m_NativeWindow, &m_Specification.FramebufferWidth, &m_Specification.FramebufferHeight);
 
-            if(TE::Renderer::Renderer::GetAPI() == TE::Renderer::RendererAPI::OpenGL)
-            {
-                m_Context = std::make_shared<TE::APIs::OpenGL::GL_Context>(m_NativeWindow);
-                if(m_Context->MakeContextCurrent())
-                    TE_CORE_INFO("GLFW OpenGL context created");
-                else
-                    TE_CORE_CRITICAL("Failed to create GLFW OpenGL context");
-            }
-
-            if(TE::Renderer::Renderer::GetAPI() == TE::Renderer::RendererAPI::Vulkan)
-            {
-                TRIMANA_ASSERT(false, "Not implemented yet");
-            }
-
-            if(TE::Renderer::Renderer::GetAPI() == TE::Renderer::RendererAPI::DirectX)
-            {
-                TRIMANA_ASSERT(false, "Not implemented yet");
-            }
+            m_Context = TE::Renderer::CreateContext(m_NativeWindow);
+            m_Context->MakeContextCurrent();
      
             m_Specification.IsActive = true;
             m_Specification.IsFocused = glfwGetWindowAttrib(m_NativeWindow, GLFW_FOCUSED);

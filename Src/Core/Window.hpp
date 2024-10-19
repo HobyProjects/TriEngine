@@ -4,7 +4,6 @@
 #include <memory>
 
 #include "OpenGL.hpp"
-
 #include "Renderer.hpp"
 #include "Context.hpp"
 #include "TypeDef.hpp"
@@ -64,58 +63,116 @@ namespace TE::Core
     };
 
     /**
+     * @enum WindowAPI
+     *
+     * @brief Enumerates the different window APIs that can be used by the engine.
+     *
+     * The WindowAPI enum is used to identify the different windowing systems
+     * available for use by the engine. Each enumerator corresponds to a
+     * specific windowing API that can be utilized.
+     */
+    enum class WindowAPI
+    {
+        /**
+         * @brief The GLFW windowing API is used.
+         *
+         * This option is selected when the engine is utilizing the GLFW
+         * windowing library for creating and managing windows.
+         */
+        GLFW_API        = 0,
+
+        /**
+         * @brief The SDL windowing API is used.
+         *
+         * This option is selected when the engine is utilizing the SDL
+         * (Simple DirectMedia Layer) library for window management.
+         */
+        SDL_API         = 1,
+
+        /**
+         * @brief The native Windows API is used.
+         *
+         * This option is selected when the engine is using the native
+         * Windows API for handling windows in a Windows environment.
+         */
+        WINDOWS_API     = 2
+    };
+
+    /**
      * @class Window
      *
-     * @brief A class to represent a window in the application.
+     * @brief An abstract base class that describes a window.
      *
-     * The Window class is responsible for creating and managing a window
-     * using GLFW and providing access to the native window handle, 
-     * window specifications, and rendering context.
+     * This class is used to define the properties and behavior of a window
+     * in the Trimana Engine. It is an abstract base class, meaning that it
+     * cannot be instantiated directly, and any derived classes must
+     * implement the pure virtual functions declared here.
      */
     class Window
     {
         public:
             /**
-             * @brief Constructs a Window with the given title.
+             * @brief Default constructor.
              *
-             * @param title The title of the window.
+             * This default constructor is left empty, as there is no need to
+             * initialize any member variables in the base class.
              */
-            Window(const String& title="Trimana Engine");
+            Window() = default;
 
             /**
-             * @brief Destructor for the Window class.
-             */
-            ~Window();
-
-            /**
-             * @brief Gets the native GLFW window handle.
+             * @brief Virtual destructor.
              *
-             * @return A pointer to the GLFWwindow.
+             * This virtual destructor is declared here to ensure that any
+             * derived classes will have a virtual destructor as well. This
+             * is important, as it allows the engine to properly clean up
+             * objects when they are destroyed.
              */
-            GLFWwindow* GetNativeWindow() const { return m_NativeWindow; }
+            ~Window() = default;
 
             /**
-             * @brief Gets the window specification.
+             * @brief Pure virtual function to retrieve the native window handle.
              *
-             * @return A reference to the WindowSpecification object.
-             */
-            WindowSpecification& GetWindowSpecification() { return m_Specification; }
-
-            /**
-             * @brief Gets the OpenGL rendering context.
+             * This function is declared as pure virtual, meaning that any
+             * derived classes must implement it. It is used to retrieve the
+             * native window handle, which is used by the renderer to
+             * associate a rendering context with the window.
              *
-             * @return A shared pointer to the rendering Context.
+             * @return a pointer to the native window handle
              */
-            std::shared_ptr<TE::Renderer::Context> GetOpenGLContext() const { return m_Context; }
+            virtual void* GetNativeWindow() = 0;
 
             /**
-             * @brief Swaps the front and back buffers.
+             * @brief Pure virtual function to retrieve the window's specification.
+             *
+             * This function is declared as pure virtual, meaning that any
+             * derived classes must implement it. It is used to retrieve the
+             * window's specification, which contains information such as the
+             * window's width and height, title, and other relevant details.
+             *
+             * @return a reference to the window's specification
              */
-            void SwapBuffers();
+            virtual WindowSpecification& GetWindowSpecification() = 0;
 
-        private:
-            GLFWwindow* m_NativeWindow{nullptr}; ///< The native GLFW window handle.
-            WindowSpecification m_Specification; ///< Specifications of the window.
-            std::shared_ptr<TE::Renderer::Context> m_Context{nullptr}; ///< The OpenGL rendering context.
+            /**
+             * @brief Pure virtual function to retrieve a shared pointer to the window's rendering context.
+             *
+             * This function is declared as pure virtual, meaning that any
+             * derived classes must implement it. It is used to retrieve a
+             * shared pointer to the window's rendering context, which is used
+             * by the renderer to draw graphics to the window.
+             *
+             * @return a shared pointer to the window's rendering context
+             */
+            virtual std::shared_ptr<TE::Renderer::Context> GetContext() = 0;
+
+            /**
+             * @brief Pure virtual function to swap the window's buffers.
+             *
+             * This function is declared as pure virtual, meaning that any
+             * derived classes must implement it. It is used to swap the
+             * window's buffers, which is necessary to present the graphics
+             * drawn to the window to the user.
+             */
+            virtual void SwapBuffers() = 0;
     };
 }

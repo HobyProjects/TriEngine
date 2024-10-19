@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include "TypeDef.hpp"
 
 namespace TE::Renderer
@@ -68,4 +69,19 @@ namespace TE::Renderer
              */
             virtual void ChangeSwapInterval(UInt32 interval) = 0;
     };
+
+    /**
+     * @brief Creates a platform-specific rendering context
+     *
+     * This function creates a platform-specific rendering context. The
+     * rendering context is created based on the type of window that is
+     * passed in. The platform-specific rendering context is then wrapped
+     * in a Context object and returned to the caller.
+     *
+     * @param window the native window handle to use for creating the
+     * rendering context
+     *
+     * @return a shared pointer to the created Context object
+     */
+    std::shared_ptr<Context> CreateContext(void* window);
 }

@@ -35,6 +35,7 @@ set(
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/Vulkan
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/DirectX
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer
 )
 
@@ -63,6 +64,10 @@ set(
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Debug.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Renderer.hpp
 
+        # APIS - GLFW
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_Window.hpp
+
         # Renderer
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Renderer.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Buffers.hpp
@@ -85,8 +90,14 @@ set(
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Debug.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Renderer.cpp
 
+        
+        # APIS - GLFW
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_Window.cpp
+
         # Renderer
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Renderer.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Buffers.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Context.cpp
 
 )
 

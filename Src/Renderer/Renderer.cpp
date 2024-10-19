@@ -63,6 +63,11 @@ namespace TE::Renderer
         return s_RendererAPI;
     }
 
+    void Renderer::ChangeAPI(RendererAPI api)
+    {
+        s_RendererAPI = api;
+    }
+
     void Renderer::Clear()
     {
         switch(s_RendererAPI)

@@ -111,6 +111,17 @@ namespace TE::Renderer
             static RendererAPI GetAPI();
 
             /**
+             * @brief Changes the currently used rendering API.
+             *
+             * This function changes the currently used rendering API. It is
+             * called by the engine when the user wants to switch to a
+             * different rendering API.
+             *
+             * @param api The new rendering API to use.
+             */
+            static void ChangeAPI(RendererAPI api);
+
+            /**
              * @brief Clears the screen.
              *
              * This function clears the screen. It is called by the engine at
