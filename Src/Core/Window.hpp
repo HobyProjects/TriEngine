@@ -99,8 +99,60 @@ namespace TE::Core
     };
 
     /**
-     * @class Window
+     * @class WindowBaseAPI
      *
+     * @brief Abstract base class that describes an interface for windowing APIs.
+     *
+     * This class is used to define the interface for any windowing API that
+     * the engine utilizes. It is an abstract base class, meaning that it
+     * cannot be instantiated directly, and any derived classes must
+     * implement the pure virtual functions declared here.
+     *
+     * The purpose of this class is to provide a common interface for
+     * different windowing APIs, such as GLFW, SDL, and native Windows, so
+     * that the engine can easily switch between them.
+     */
+    class WindowBaseAPI
+    {
+        public:
+            WindowBaseAPI() = default;
+            virtual ~WindowBaseAPI() = default;
+
+            /**
+             * @brief Initializes the windowing API.
+             *
+             * This function must be implemented by any derived classes, and
+             * is responsible for initializing the windowing API. This may
+             * involve loading the necessary libraries, setting up the window
+             * management system, and so on.
+             */
+            virtual bool Init() = 0;
+
+            /**
+             * @brief Shuts down the windowing API.
+             *
+             * This function must be implemented by any derived classes, and
+             * is responsible for shutting down the windowing API. This may
+             * involve unloading the necessary libraries, tearing down the
+             * window management system, and so on.
+             */
+            virtual void Shutdown() = 0;
+
+            /**
+             * @brief Get the windowing API being used.
+             * 
+             * This pure virtual function is used to retrieve the windowing API that
+             * is currently being utilized by the engine. Any class derived from this
+             * abstract base class must implement this function to return the specific
+             * windowing API being used (e.g., GLFW, SDL, native Windows API).
+             * 
+             * @return The windowing API being used (e.g., GLFW_API, SDL_API, WINDOWS_API).
+             */
+            virtual WindowAPI GetAPI() = 0;
+    };
+
+    /**
+     * @class Window
      * @brief An abstract base class that describes a window.
      *
      * This class is used to define the properties and behavior of a window
@@ -175,4 +227,17 @@ namespace TE::Core
              */
             virtual void SwapBuffers() = 0;
     };
+
+    /**
+     * @brief Creates a new window with the specified title.
+     *
+     * This function creates a new window with the specified title and
+     * returns a shared pointer to it. The window is created using the
+     * current windowing API (GLFW, SDL, or native Windows API) and is
+     * set up to be used by the renderer to draw graphics.
+     *
+     * @param title The title of the window to be created.
+     * @return a shared pointer to the newly created window
+     */
+    std::shared_ptr<Window> CreateWindow(const String& title, WindowAPI api = WindowAPI::GLFW_API);
 }
