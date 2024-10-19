@@ -46,6 +46,8 @@ set(
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Logs.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/KeyCodes.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/TypeDef.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Window.hpp
+    
 
         # EVENTS
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/Events.hpp
@@ -71,6 +73,7 @@ set(
     TRIMANA_SOURCES_FILES
         # CORE
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Logs.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Window.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/EntryPoint/TrimanaEngine.cpp
 
         # EVENTS

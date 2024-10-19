@@ -16,7 +16,7 @@ namespace TE::APIs::OpenGL
      * provides functions to make the context current, swap buffers, and
      * change the swap interval.
      */
-    class GL_Context : public TE::Renderer::RendererContext
+    class GL_Context : public TE::Renderer::Context
     {
         public:
             /**

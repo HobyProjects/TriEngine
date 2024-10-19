@@ -9,6 +9,8 @@
  */
 #pragma once
 
+#include <string>
+
 /**
  * @brief Basic type definitions
  *
@@ -24,6 +26,7 @@ typedef unsigned char UInt8;        // An 8-bit unsigned integer
 typedef char Int8;                  // An 8-bit signed integer
 typedef float Float32;              // A 32-bit floating-point number
 typedef double Float64;             // A 64-bit floating-point number
+typedef std::string String;         // A string of characters
 
 //==============================================================================
 

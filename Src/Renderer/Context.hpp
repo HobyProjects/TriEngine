@@ -14,7 +14,7 @@ namespace TE::Renderer
      * @note Any implementing class must provide a constructor that takes no
      * arguments, since this class is used as a base class for a factory class.
      */
-    class RendererContext
+    class Context
     {
         public:
 
@@ -24,7 +24,7 @@ namespace TE::Renderer
              * This constructor is left empty. There is no need to initialize
              * anything in the constructor.
              * */
-            RendererContext() = default;
+            Context() = default;
             
             /**
              * @brief Destructor
@@ -33,7 +33,7 @@ namespace TE::Renderer
              * destructor is called when deleting an instance of this class
              * through a pointer to the base class.
              */
-            virtual ~RendererContext() = default;
+            virtual ~Context() = default;
 
             /**
              * @brief Make this context current
