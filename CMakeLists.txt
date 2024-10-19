@@ -56,6 +56,7 @@ set(
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/KeyboardEvents.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/MouseEvents.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/EventsReceiver.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/InputHandler.hpp
 
         # APIS - OPENGL
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/OpenGL.hpp
@@ -68,6 +69,7 @@ set(
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_Window.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_EventsReceiver.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_InputHandler.hpp
 
         # Renderer
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Renderer.hpp
@@ -84,6 +86,7 @@ set(
 
         # EVENTS
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/EventsReceiver.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/InputHandler.cpp
 
         # APIS - OPENGL
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Buffers.cpp
@@ -94,6 +97,7 @@ set(
         # APIS - GLFW
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_Window.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_EventsReceiver.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_InputHandler.cpp
 
         # Renderer
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Renderer.cpp
