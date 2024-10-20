@@ -38,12 +38,27 @@ namespace TE::Events
              * @brief Check if a specific key is pressed.
              * @param keyCode The KeyCodes value representing the key.
              */
-            virtual void IsKeyPressed(TE::Core::KeyCodes keyCode) = 0;
+            virtual bool IsKeyPressed(TE::Core::KeyCodes keyCode) = 0;
 
             /**
              * @brief Check if a specific mouse button is pressed.
              * @param button The MouseButton value representing the mouse button.
              */
-            virtual void IsMouseButtonPressed(TE::Core::MouseButton button) = 0;
+            virtual bool IsMouseButtonPressed(TE::Core::MouseButton button) = 0;
     };
+
+    /**
+     * @brief Creates a new InputHandler object based on the specified window API.
+     * 
+     * This function is used to create a new InputHandler object based on the specified window API.
+     * The InputHandler object is used to handle input events, including keyboard and mouse inputs.
+     * It requires derived classes to implement methods for targeting a window and checking the state
+     * of keys and mouse buttons.
+     * 
+     * @param api The window API to use when creating the InputHandler object. The default value is
+     * TE::Core::WindowAPI::GLFW_API.
+     * 
+     * @return A shared pointer to the newly created InputHandler object.
+     */
+    std::shared_ptr<TE::Events::InputHandler> CreateInputHandler(TE::Core::WindowAPI api = TE::Core::WindowAPI::GLFW_API);
 }
