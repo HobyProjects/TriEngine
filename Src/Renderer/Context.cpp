@@ -5,13 +5,15 @@
 
 namespace TE::Renderer
 {
-    std::shared_ptr<Context> CreateContext(void* window)
+    std::shared_ptr<Context> CreateContext(WindowAPIPtr window)
     {
         switch(Renderer::GetAPI())
         {
-            case RendererAPI::None: TRIMANA_ASSERT(false, "No rendering API selected"); return nullptr;
-            case RendererAPI::OpenGL: return std::make_shared<TE::APIs::OpenGL::GL_Context>(window);
-            default: return nullptr;
+            case RendererAPI::None:         TRIMANA_ASSERT(false, "No rendering API selected"); return nullptr;
+            case RendererAPI::OpenGL:       return std::make_shared<TE::APIs::OpenGL::GL_Context>(window);
+            case RendererAPI::Vulkan:       TRIMANA_ASSERT(false, "Not implemented yet"); return nullptr;
+            case RendererAPI::DirectX:      TRIMANA_ASSERT(false, "Not implemented yet"); return nullptr;
+            default:                        return nullptr;
         };
     }
 }

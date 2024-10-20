@@ -83,5 +83,5 @@ namespace TE::Renderer
      *
      * @return a shared pointer to the created Context object
      */
-    std::shared_ptr<Context> CreateContext(void* window);
+    std::shared_ptr<Context> CreateContext(WindowAPIPtr window);
 }

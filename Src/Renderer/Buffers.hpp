@@ -223,7 +223,7 @@ namespace TE::Renderer
              * This function returns the ID of the vertex buffer. It must
              * be overridden in the derived classes.
              */
-            virtual TE_VertexBufferID GetID() const = 0;
+            virtual VertexBufferID GetID() const = 0;
 
             /**
              * @brief Set the data of the vertex buffer
@@ -308,7 +308,42 @@ namespace TE::Renderer
              *
              * @return The ID of the index buffer
              */
-            virtual TE_IndexBufferID GetID() const = 0;
+            virtual IndexBufferID GetID() const = 0;
     };
+
+    /**
+     * @brief Create a new vertex buffer with the specified size
+     *
+     * This function creates a new vertex buffer with the specified size
+     * and returns a shared pointer to the new vertex buffer.
+     *
+     * @param allocatorSize The size of the vertex buffer in bytes
+     * @return A shared pointer to the new vertex buffer
+     */
+    std::shared_ptr<VertexBuffer> CreateVertexBuffer(UInt32 allocatorSize);
+
+    /**
+     * @brief Create a new vertex buffer with the specified data
+     *
+     * This function creates a new vertex buffer with the specified data
+     * and returns a shared pointer to the new vertex buffer.
+     *
+     * @param data The data to store in the vertex buffer
+     * @param size The size of the data in bytes
+     * @return A shared pointer to the new vertex buffer
+     */
+    std::shared_ptr<VertexBuffer> CreateVertexBuffer(VertexBufferData data, UInt32 size);
+
+    /**
+     * @brief Create a new index buffer with the specified data
+     *
+     * This function creates a new index buffer with the specified data
+     * and returns a shared pointer to the new index buffer.
+     *
+     * @param data The data to store in the index buffer
+     * @param count The number of indices in the index buffer
+     * @return A shared pointer to the new index buffer
+     */
+    std::shared_ptr<IndexBuffer> CreateIndexBuffer(IndexBufferData data, UInt32 count);
 
 }

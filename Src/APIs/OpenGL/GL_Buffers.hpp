@@ -47,7 +47,7 @@ namespace TE::APIs::OpenGL
              * This function creates a vertex buffer and stores the specified
              * data in it.
              */
-            GL_VertexBuffer(TE_VertexBufferData data, uint32_t dataSize);
+            GL_VertexBuffer(VertexBufferData data, uint32_t dataSize);
 
             /**
              * @brief Destructor
@@ -78,7 +78,7 @@ namespace TE::APIs::OpenGL
              * This function returns the ID of the vertex buffer. It must
              * be overridden in the derived classes.
              */
-            virtual TE_VertexBufferID GetID() const override { return m_VertexBufferID; }
+            virtual VertexBufferID GetID() const override { return m_VertexBufferID; }
 
             /**
              * @brief Set the data of the vertex buffer
@@ -114,7 +114,7 @@ namespace TE::APIs::OpenGL
              * This is the OpenGL ID of the vertex buffer. It is used to
              * identify the vertex buffer in OpenGL.
              */
-            TE_VertexBufferID m_VertexBufferID{0};
+            VertexBufferID m_VertexBufferID{0};
 
             /**
              * @brief The layout of the vertex buffer
@@ -154,7 +154,7 @@ namespace TE::APIs::OpenGL
              * @param data The data to store in the index buffer
              * @param indicesCount The number of indices in the index buffer
              */
-            GL_IndexBuffer(TE_IndexBufferData data, uint32_t indicesCount);
+            GL_IndexBuffer(IndexBufferData data, uint32_t indicesCount);
 
             /**
              * @brief Destructor
@@ -185,7 +185,7 @@ namespace TE::APIs::OpenGL
              * This function returns the ID of the index buffer. It must
              * be overridden in the derived classes.
              */
-            virtual TE_IndexBufferID GetID() const override { return m_IndexBufferID; }
+            virtual IndexBufferID GetID() const override { return m_IndexBufferID; }
 
             /**
              * @brief Get the number of indices in the index buffer
@@ -203,7 +203,7 @@ namespace TE::APIs::OpenGL
              * This is the OpenGL ID of the index buffer. It is used to
              * identify the index buffer in OpenGL.
              */
-            TE_IndexBufferID m_IndexBufferID{0};
+            IndexBufferID m_IndexBufferID{0};
 
             /**
              * @brief The number of indices in the index buffer

@@ -191,7 +191,7 @@ namespace TE::Core
              *
              * @return a pointer to the native window handle
              */
-            virtual void* GetNativeWindow() = 0;
+            virtual WindowAPIPtr GetNativeWindow() = 0;
 
             /**
              * @brief Pure virtual function to retrieve the window's specification.

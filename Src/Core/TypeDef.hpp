@@ -9,7 +9,16 @@
  */
 #pragma once
 
+#include <fstream>
+#include <filesystem>
 #include <string>
+
+#define GLM_ENABLE_EXPERIMENTAL
+#include <glm/glm.hpp>
+#include <glm/ext/matrix_transform.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtx/vector_angle.hpp>
 
 /**
  * @brief Basic type definitions
@@ -27,6 +36,134 @@ typedef char Int8;                  // An 8-bit signed integer
 typedef float Float32;              // A 32-bit floating-point number
 typedef double Float64;             // A 64-bit floating-point number
 typedef std::string String;         // A string of characters
+typedef std::filesystem::path Path; // A path to a file
+typedef std::ifstream InputFile;    // A file stream
+typedef void* WindowAPIPtr;         // A pointer to a window
+
+//==============================================================================
+
+/**
+ * @brief A type definition for a 2D vector of floats
+ *
+ * This type definition is used to represent a 2D vector of floats in the
+ * engine. It is used throughout the engine to represent vectors in 2D space.
+ */
+typedef glm::vec2 Vec2;
+
+/**
+ * @brief A type definition for a 3D vector of floats
+ *
+ * This type definition is used to represent a 3D vector of floats in the
+ * engine. It is used throughout the engine to represent vectors in 3D space.
+ */
+typedef glm::vec3 Vec3;
+
+/**
+ * @brief A type definition for a 4D vector of floats
+ *
+ * This type definition is used to represent a 4D vector of floats in the
+ * engine. It is used throughout the engine to represent vectors in 4D space.
+ */
+typedef glm::vec4 Vec4;
+
+/**
+ * @brief A type definition for a 2x2 matrix of floats
+ *
+ * This type definition is used to represent a 2x2 matrix of floats in the
+ * engine. It is used throughout the engine to represent transformations in
+ * 2D space.
+ */
+typedef glm::mat2 Mat2;
+
+/**
+ * @brief A type definition for a 3x3 matrix of floats
+ *
+ * This type definition is used to represent a 3x3 matrix of floats in the
+ * engine. It is used throughout the engine to represent transformations in
+ * 3D space.
+ */
+typedef glm::mat3 Mat3;
+
+/**
+ * @brief A type definition for a 4x4 matrix of floats
+ *
+ * This type definition is used to represent a 4x4 matrix of floats in the
+ * engine. It is used throughout the engine to represent transformations in
+ * 4D space.
+ */
+typedef glm::mat4 Mat4;
+
+/**
+ * @brief A type definition for a quaternion of floats
+ *
+ * This type definition is used to represent a quaternion of floats in the
+ * engine. It is used throughout the engine to represent rotations in 3D
+ * space.
+ */
+typedef glm::quat Quat;
+
+/**
+ * @brief A type definition for a 2D vector of doubles
+ *
+ * This type definition is used to represent a 2D vector of doubles in the
+ * engine. It is used throughout the engine to represent vectors in 2D space
+ * with high precision.
+ */
+typedef glm::dvec2 DVec2;
+
+/**
+ * @brief A type definition for a 3D vector of doubles
+ *
+ * This type definition is used to represent a 3D vector of doubles in the
+ * engine. It is used throughout the engine to represent vectors in 3D space
+ * with high precision.
+ */
+typedef glm::dvec3 DVec3;
+
+/**
+ * @brief A type definition for a 4D vector of doubles
+ *
+ * This type definition is used to represent a 4D vector of doubles in the
+ * engine. It is used throughout the engine to represent vectors in 4D space
+ * with high precision.
+ */
+typedef glm::dvec4 DVec4;
+
+/**
+ * @brief A type definition for a 2x2 matrix of doubles
+ *
+ * This type definition is used to represent a 2x2 matrix of doubles in the
+ * engine. It is used throughout the engine to represent transformations in
+ * 2D space with high precision.
+ */
+typedef glm::dmat2 DMat2;
+
+/**
+ * @brief A type definition for a 3x3 matrix of doubles
+ *
+ * This type definition is used to represent a 3x3 matrix of doubles in the
+ * engine. It is used throughout the engine to represent transformations in
+ * 3D space with high precision.
+ */
+typedef glm::dmat3 DMat3;
+
+/**
+ * @brief A type definition for a 4x4 matrix of doubles
+ *
+ * This type definition is used to represent a 4x4 matrix of doubles in the
+ * engine. It is used throughout the engine to represent transformations in
+ * 4D space with high precision.
+ */
+typedef glm::dmat4 DMat4;
+
+/**
+ * @brief A type definition for a quaternion of doubles
+ *
+ * This type definition is used to represent a quaternion of doubles in the
+ * engine. It is used throughout the engine to represent rotations in 3D
+ * space with high precision.
+ */
+typedef glm::dquat DQuat;
 
 //==============================================================================
 
@@ -37,7 +174,7 @@ typedef std::string String;         // A string of characters
  * is an unsigned integer, which is used to index into an array of vertex
  * buffers.
  */
-typedef unsigned int TE_VertexBufferID;
+typedef unsigned int VertexBufferID;
 
 /**
  * @brief A type definition for an index buffer ID
@@ -46,7 +183,7 @@ typedef unsigned int TE_VertexBufferID;
  * is an unsigned integer, which is used to index into an array of index
  * buffers.
  */
-typedef unsigned int TE_IndexBufferID;
+typedef unsigned int IndexBufferID;
 
 /**
  * @brief A type definition for a texture ID
@@ -54,7 +191,7 @@ typedef unsigned int TE_IndexBufferID;
  * This type definition is used to identify a texture in the engine. It is an
  * unsigned integer, which is used to index into an array of textures.
  */
-typedef unsigned int TE_TextureID;
+typedef unsigned int TextureID;
 
 /**
  * @brief A type definition for a shader ID
@@ -62,7 +199,7 @@ typedef unsigned int TE_TextureID;
  * This type definition is used to identify a shader in the engine. It is an
  * unsigned integer, which is used to index into an array of shaders.
  */
-typedef unsigned int TE_ShaderID;
+typedef unsigned int ShaderID;
 
 /**
  * @brief A type definition for a shader program ID
@@ -71,7 +208,7 @@ typedef unsigned int TE_ShaderID;
  * is an unsigned integer, which is used to index into an array of shader
  * programs.
  */
-typedef unsigned int TE_ShaderProgramID;
+typedef unsigned int ShaderProgramID;
 
 /**
  * @brief A type definition for a uniform ID
@@ -79,7 +216,7 @@ typedef unsigned int TE_ShaderProgramID;
  * This type definition is used to identify a uniform in the engine. It is an
  * unsigned integer, which is used to index into an array of uniforms.
  */
-typedef unsigned int TE_UniformID;
+typedef unsigned int UniformLocation;
 
 /**
  * @brief A type definition for vertex buffer data
@@ -88,7 +225,7 @@ typedef unsigned int TE_UniformID;
  * The data is represented as a pointer to a float, which is the type of the
  * data stored in the buffer.
  */
-typedef float* TE_VertexBufferData;
+typedef float* VertexBufferData;
 
 /**
  * @brief A type definition for index buffer data
@@ -97,4 +234,4 @@ typedef float* TE_VertexBufferData;
  * The data is represented as a pointer to an unsigned integer, which is the type
  * of the data stored in the buffer.
  */
-typedef unsigned int* TE_IndexBufferData;
+typedef unsigned int* IndexBufferData;

@@ -9,7 +9,7 @@ namespace TE::APIs::OpenGL
         glNamedBufferData(m_VertexBufferID, allocatorSize, nullptr, GL_DYNAMIC_DRAW);
     }
 
-    GL_VertexBuffer::GL_VertexBuffer(TE_VertexBufferData data, uint32_t dataSize)
+    GL_VertexBuffer::GL_VertexBuffer(VertexBufferData data, uint32_t dataSize)
     {
         glCreateBuffers(1, &m_VertexBufferID);
         glNamedBufferData(m_VertexBufferID, dataSize, data, GL_STATIC_DRAW);
@@ -40,7 +40,7 @@ namespace TE::APIs::OpenGL
         m_Layout = layout;
     }
 
-    GL_IndexBuffer::GL_IndexBuffer(TE_IndexBufferData data, uint32_t indicesCount)
+    GL_IndexBuffer::GL_IndexBuffer(IndexBufferData data, uint32_t indicesCount)
     {
         glCreateBuffers(1, &m_IndexBufferID);
         glNamedBufferData(m_IndexBufferID, indicesCount * sizeof(uint32_t), data, GL_STATIC_DRAW);
