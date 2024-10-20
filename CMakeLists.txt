@@ -64,6 +64,7 @@ set(
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Context.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Debug.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Renderer.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_SystemInfo.hpp
 
         # APIS - GLFW
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW.hpp
@@ -93,6 +94,7 @@ set(
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Context.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Debug.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Renderer.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_SystemInfo.cpp
   
         # APIS - GLFW
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_Window.cpp
