@@ -38,6 +38,7 @@ set(
         ${TE_SRC_DIR}/APIs/Vulkan
         ${TE_SRC_DIR}/APIs/DirectX
         ${TE_SRC_DIR}/APIs/GLFW
+        ${TE_SRC_DIR}/APIs/ImGui/GLFW
         ${TE_SRC_DIR}/Renderer
 )
 
@@ -65,7 +66,9 @@ set(
 
         # IMGUI
         ${TE_SRC_DIR}/ImGui/ImGui.hpp
-        ${TE_SRC_DIR}/ImGui/ImGuiKeyCode.hpp
+
+        # IMGUI - GLFW
+        ${TE_SRC_DIR}/APIs/ImGui/GLFW/GLFW_ImGui_KeyCode.hpp
 
         # APIS - OPENGL
         ${TE_SRC_DIR}/APIs/OpenGL/OpenGL.hpp
@@ -105,7 +108,9 @@ set(
 
         # IMGUI
         ${TE_SRC_DIR}/ImGui/ImGui.cpp
-        ${TE_SRC_DIR}/ImGui/ImGuiKeyCode.cpp
+
+        # IMGUI - GLFW
+        ${TE_SRC_DIR}/APIs/ImGui/GLFW/GLFW_ImGui_KeyCode.cpp
 
         # APIS - OPENGL
         ${TE_SRC_DIR}/APIs/OpenGL/GL_Buffers.cpp
