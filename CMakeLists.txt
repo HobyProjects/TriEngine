@@ -19,105 +19,114 @@ set(CMAKE_C_STANDARD 17)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)
 
+set(TE_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Src)
+
 set(
     TRIMANA_INCLUDE_DIRECTORIES
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/EntryPoint
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/OpenGL
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/ImGui
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Application
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Camera
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Scene
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Editor
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Maths
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/Vulkan
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/DirectX
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer
+        ${TE_SRC_DIR}/Core
+        ${TE_SRC_DIR}/EntryPoint
+        ${TE_SRC_DIR}/Events
+        ${TE_SRC_DIR}/OpenGL
+        ${TE_SRC_DIR}/ImGui
+        ${TE_SRC_DIR}/Application
+        ${TE_SRC_DIR}/Camera
+        ${TE_SRC_DIR}/Scene
+        ${TE_SRC_DIR}/Editor
+        ${TE_SRC_DIR}/Maths
+        ${TE_SRC_DIR}/APIs
+        ${TE_SRC_DIR}/APIs/OpenGL
+        ${TE_SRC_DIR}/APIs/Vulkan
+        ${TE_SRC_DIR}/APIs/DirectX
+        ${TE_SRC_DIR}/APIs/GLFW
+        ${TE_SRC_DIR}/Renderer
 )
 
 set(
     TRIMANA_HEADERS_FILES
         # CORE
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Base.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Asserts.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Logs.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/KeyCodes.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/TypeDef.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Window.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Timer.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Layer.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/LayerStack.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Instrument.hpp
+        ${TE_SRC_DIR}/Core/Base.hpp
+        ${TE_SRC_DIR}/Core/Asserts.hpp
+        ${TE_SRC_DIR}/Core/Logs.hpp
+        ${TE_SRC_DIR}/Core/KeyCodes.hpp
+        ${TE_SRC_DIR}/Core/TypeDef.hpp
+        ${TE_SRC_DIR}/Core/Window.hpp
+        ${TE_SRC_DIR}/Core/Timer.hpp
+        ${TE_SRC_DIR}/Core/Layer.hpp
+        ${TE_SRC_DIR}/Core/LayerStack.hpp
+        ${TE_SRC_DIR}/Core/Instrument.hpp
     
         # EVENTS
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/Events.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/WindowEvents.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/KeyboardEvents.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/MouseEvents.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/EventsReceiver.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/InputHandler.hpp
+        ${TE_SRC_DIR}/Events/Events.hpp
+        ${TE_SRC_DIR}/Events/WindowEvents.hpp
+        ${TE_SRC_DIR}/Events/KeyboardEvents.hpp
+        ${TE_SRC_DIR}/Events/MouseEvents.hpp
+        ${TE_SRC_DIR}/Events/EventsReceiver.hpp
+        ${TE_SRC_DIR}/Events/InputHandler.hpp
+
+        # IMGUI
+        ${TE_SRC_DIR}/ImGui/ImGui.hpp
+        ${TE_SRC_DIR}/ImGui/ImGuiKeyCode.hpp
 
         # APIS - OPENGL
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/OpenGL.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Buffers.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Context.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Debug.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Renderer.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_SystemInfo.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Shader.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_VertexArray.hpp
-
+        ${TE_SRC_DIR}/APIs/OpenGL/OpenGL.hpp
+        ${TE_SRC_DIR}/APIs/OpenGL/GL_Buffers.hpp
+        ${TE_SRC_DIR}/APIs/OpenGL/GL_Context.hpp
+        ${TE_SRC_DIR}/APIs/OpenGL/GL_Debug.hpp
+        ${TE_SRC_DIR}/APIs/OpenGL/GL_Renderer.hpp
+        ${TE_SRC_DIR}/APIs/OpenGL/GL_SystemInfo.hpp
+        ${TE_SRC_DIR}/APIs/OpenGL/GL_Shader.hpp
+        ${TE_SRC_DIR}/APIs/OpenGL/GL_VertexArray.hpp
 
         # APIS - GLFW
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_Window.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_EventsReceiver.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_InputHandler.hpp
+        ${TE_SRC_DIR}/APIs/GLFW/GLFW.hpp
+        ${TE_SRC_DIR}/APIs/GLFW/GLFW_Window.hpp
+        ${TE_SRC_DIR}/APIs/GLFW/GLFW_EventsReceiver.hpp
+        ${TE_SRC_DIR}/APIs/GLFW/GLFW_InputHandler.hpp
 
         # Renderer
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Renderer.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Buffers.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Context.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Shaders.hpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/VertexArray.hpp
+        ${TE_SRC_DIR}/Renderer/Renderer.hpp
+        ${TE_SRC_DIR}/Renderer/Buffers.hpp
+        ${TE_SRC_DIR}/Renderer/Context.hpp
+        ${TE_SRC_DIR}/Renderer/Shaders.hpp
+        ${TE_SRC_DIR}/Renderer/VertexArray.hpp
 )
 
 set(
     TRIMANA_SOURCES_FILES
         # CORE
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Logs.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Window.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/LayerStack.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/EntryPoint/TrimanaEngine.cpp
+        ${TE_SRC_DIR}/Core/Logs.cpp
+        ${TE_SRC_DIR}/Core/Window.cpp
+        ${TE_SRC_DIR}/Core/LayerStack.cpp
+        ${TE_SRC_DIR}/EntryPoint/TrimanaEngine.cpp
 
         # EVENTS
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/EventsReceiver.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/InputHandler.cpp
 
+        # IMGUI
+        ${TE_SRC_DIR}/ImGui/ImGui.cpp
+        ${TE_SRC_DIR}/ImGui/ImGuiKeyCode.cpp
+
         # APIS - OPENGL
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Buffers.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Context.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Debug.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Renderer.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_SystemInfo.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Shader.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_VertexArray.cpp
+        ${TE_SRC_DIR}/APIs/OpenGL/GL_Buffers.cpp
+        ${TE_SRC_DIR}/APIs/OpenGL/GL_Context.cpp
+        ${TE_SRC_DIR}/APIs/OpenGL/GL_Debug.cpp
+        ${TE_SRC_DIR}/APIs/OpenGL/GL_Renderer.cpp
+        ${TE_SRC_DIR}/APIs/OpenGL/GL_SystemInfo.cpp
+        ${TE_SRC_DIR}/APIs/OpenGL/GL_Shader.cpp
+        ${TE_SRC_DIR}/APIs/OpenGL/GL_VertexArray.cpp
           
         # APIS - GLFW
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_Window.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_EventsReceiver.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_InputHandler.cpp
+        ${TE_SRC_DIR}/APIs/GLFW/GLFW_Window.cpp
+        ${TE_SRC_DIR}/APIs/GLFW/GLFW_EventsReceiver.cpp
+        ${TE_SRC_DIR}/APIs/GLFW/GLFW_InputHandler.cpp
 
         # Renderer
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Renderer.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Buffers.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Context.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Shaders.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/VertexArray.cpp
+        ${TE_SRC_DIR}/Renderer/Renderer.cpp
+        ${TE_SRC_DIR}/Renderer/Buffers.cpp
+        ${TE_SRC_DIR}/Renderer/Context.cpp
+        ${TE_SRC_DIR}/Renderer/Shaders.cpp
+        ${TE_SRC_DIR}/Renderer/VertexArray.cpp
 
 )
 
