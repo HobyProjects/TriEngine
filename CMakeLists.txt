@@ -48,8 +48,10 @@ set(
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/KeyCodes.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/TypeDef.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Window.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Timer.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Layer.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/LayerStack.hpp
     
-
         # EVENTS
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/Events.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/WindowEvents.hpp
@@ -66,6 +68,7 @@ set(
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Renderer.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_SystemInfo.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Shader.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_VertexArray.hpp
 
 
         # APIS - GLFW
@@ -79,6 +82,7 @@ set(
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Buffers.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Context.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Shaders.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/VertexArray.hpp
 )
 
 set(
@@ -86,6 +90,7 @@ set(
         # CORE
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Logs.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Window.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/LayerStack.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/EntryPoint/TrimanaEngine.cpp
 
         # EVENTS
@@ -99,6 +104,7 @@ set(
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Renderer.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_SystemInfo.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_Shader.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/OpenGL/GL_VertexArray.cpp
           
         # APIS - GLFW
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/APIs/GLFW/GLFW_Window.cpp
@@ -110,6 +116,7 @@ set(
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Buffers.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Context.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/Shaders.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Renderer/VertexArray.cpp
 
 )
 

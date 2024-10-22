@@ -6,3 +6,4 @@
 #include "GL_Renderer.hpp"
 #include "GL_Shader.hpp"
 #include "GL_SystemInfo.hpp"
+#include "GL_VertexArray.hpp"

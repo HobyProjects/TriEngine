@@ -12,6 +12,7 @@
 #include <fstream>
 #include <filesystem>
 #include <string>
+#include <memory>
 
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/glm.hpp>
@@ -235,3 +236,12 @@ typedef float* VertexBufferData;
  * of the data stored in the buffer.
  */
 typedef unsigned int* IndexBufferData;
+
+/**
+ * @brief A type definition for a vertex array ID
+ *
+ * This type definition is used to identify a vertex array in the engine. It
+ * is an unsigned integer, which is used to index into an array of vertex
+ * arrays.
+ */
+typedef unsigned int VertexArrayID;
