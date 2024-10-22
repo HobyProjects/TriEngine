@@ -64,8 +64,8 @@ set(
         ${TE_SRC_DIR}/Events/EventsReceiver.hpp
         ${TE_SRC_DIR}/Events/InputHandler.hpp
 
-        # IMGUI
-        ${TE_SRC_DIR}/ImGui/ImGui.hpp
+        # UI
+        ${TE_SRC_DIR}/UI/UI.hpp
 
         # IMGUI - GLFW
         ${TE_SRC_DIR}/APIs/ImGui/GLFW/GLFW_ImGui_KeyCode.hpp
@@ -106,8 +106,8 @@ set(
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/EventsReceiver.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/InputHandler.cpp
 
-        # IMGUI
-        ${TE_SRC_DIR}/ImGui/ImGui.cpp
+        # UI
+        ${TE_SRC_DIR}/UI/UI.cpp
 
         # IMGUI - GLFW
         ${TE_SRC_DIR}/APIs/ImGui/GLFW/GLFW_ImGui_KeyCode.cpp
