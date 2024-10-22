@@ -22,7 +22,7 @@ namespace TE::Renderer
          *
          * This option is used when the engine is not using any rendering API.
          */
-        None        = 0,
+        None        = TE_BIT(0),
 
         /**
          * @brief The OpenGL rendering API is used.
@@ -30,7 +30,7 @@ namespace TE::Renderer
          * This option is used when the engine is compiled to use the OpenGL
          * rendering API.
          */
-        OpenGL      = 1,
+        OpenGL      = TE_BIT(1),
 
         /**
          * @brief The Vulkan rendering API is used.
@@ -38,7 +38,7 @@ namespace TE::Renderer
          * This option is used when the engine is compiled to use the Vulkan
          * rendering API.
          */
-        Vulkan      = 2,
+        Vulkan      = TE_BIT(2),
 
         /**
          * @brief The DirectX rendering API is used.
@@ -46,7 +46,7 @@ namespace TE::Renderer
          * This option is used when the engine is compiled to use the DirectX
          * rendering API.
          */
-        DirectX     = 3
+        DirectX     = TE_BIT(3)
     };
 
     /**

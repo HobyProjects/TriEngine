@@ -18,13 +18,13 @@ namespace TE::UI
      * The UITheme enum is used to specify which theme to use for the ImGui UI.
      * Currently, the following themes are supported:
      *
-     * - Drak:   A dark theme with a black background and light text.
+     * - Dark:   A dark theme with a black background and light text.
      * - Light:  A light theme with a white background and dark text.
      * - Classic: The classic ImGui theme with a light background and dark text.
      */
     enum class UITheme
     {
-        Drak    = 0,    ///< A dark theme with a black background and light text.
+        Dark    = 0,    ///< A dark theme with a black background and light text.
         Light   = 1,    ///< A light theme with a white background and dark text.
         Classic = 2     ///< The classic ImGui theme with a light background and dark text.
     };
@@ -51,16 +51,18 @@ namespace TE::UI
             {}
 
             /**
-             * @brief Constructor.
+             * @brief Constructor
              *
              * This constructor is used to construct an instance of the UILayer
-             * class with a given window and theme.
+             * class with the specified window and theme.
              *
-             * @param window The window that the layer is attached to.
-             * @param theme  The theme of the UI. Defaults to UITheme::Drak.
+             * @param window The window to which the layer will be attached.
+             * @param windowApi The window API to use when creating the layer.
+             * @param theme The theme to use for the ImGui UI. The default value
+             * is Dark.
              */
-            UILayer(std::shared_ptr<TE::Core::Window> window, UITheme theme = UITheme::Drak);
-
+            UILayer(std::shared_ptr<TE::Core::Window> window, TE::Core::WindowAPI windowApi = TE::Core::WindowAPI::GLFW_API, UITheme theme = UITheme::Dark);
+            
             /**
              * @brief Destructor
              *
@@ -177,8 +179,13 @@ namespace TE::UI
             bool m_AllowEvents{true};
 
             /**
+             * @brief The window API associated with the UI layer.
+             */
+            TE::Core::WindowAPI m_WindowApi{TE::Core::WindowAPI::GLFW_API};
+
+            /**
              * @brief The theme of the ImGui UI.
              */
-            UITheme m_Theme{UITheme::Drak};
+            UITheme m_Theme{UITheme::Dark};
     };
 }

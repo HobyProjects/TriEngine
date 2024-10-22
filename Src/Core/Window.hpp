@@ -73,13 +73,15 @@ namespace TE::Core
      */
     enum class WindowAPI
     {
+        None            = TE_BIT(0),
+
         /**
          * @brief The GLFW windowing API is used.
          *
          * This option is selected when the engine is utilizing the GLFW
          * windowing library for creating and managing windows.
          */
-        GLFW_API        = 0,
+        GLFW_API        = TE_BIT(1),
 
         /**
          * @brief The SDL windowing API is used.
@@ -87,7 +89,7 @@ namespace TE::Core
          * This option is selected when the engine is utilizing the SDL
          * (Simple DirectMedia Layer) library for window management.
          */
-        SDL_API         = 1,
+        SDL_API         = TE_BIT(2),
 
         /**
          * @brief The native Windows API is used.
@@ -95,7 +97,7 @@ namespace TE::Core
          * This option is selected when the engine is using the native
          * Windows API for handling windows in a Windows environment.
          */
-        WIN32_API     = 2
+        WIN32_API       = TE_BIT(3),
     };
 
     /**
