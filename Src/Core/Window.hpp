@@ -95,7 +95,7 @@ namespace TE::Core
          * This option is selected when the engine is using the native
          * Windows API for handling windows in a Windows environment.
          */
-        WINDOWS_API     = 2
+        WIN32_API     = 2
     };
 
     /**
@@ -146,7 +146,7 @@ namespace TE::Core
              * abstract base class must implement this function to return the specific
              * windowing API being used (e.g., GLFW, SDL, native Windows API).
              * 
-             * @return The windowing API being used (e.g., GLFW_API, SDL_API, WINDOWS_API).
+             * @return The windowing API being used (e.g., GLFW_API, SDL_API, WIN32_API).
              */
             virtual WindowAPI GetAPI() = 0;
     };

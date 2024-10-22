@@ -51,6 +51,7 @@ set(
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Timer.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Layer.hpp
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/LayerStack.hpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/Src/Core/Instrument.hpp
     
         # EVENTS
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/Events.hpp
