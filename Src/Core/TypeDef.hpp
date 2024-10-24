@@ -245,3 +245,22 @@ typedef unsigned int* IndexBufferData;
  * arrays.
  */
 typedef unsigned int VertexArrayID;
+
+/**
+ * @brief A type definition for a texture ID
+ *
+ * This type definition is used to identify a texture in the engine. It is an
+ * unsigned integer, which is used to index into an array of textures.
+ */
+typedef unsigned int TextureID;
+
+/**
+ * @brief A type definition for texture data
+ *
+ * This type definition is used to represent the data stored in a texture. The
+ * data is represented as a void pointer, which is a pointer to an unspecified
+ * type. This is necessary because textures can store different types of data
+ * (e.g. color data, depth data, etc.), and the type of data stored in a texture
+ * can vary depending on the engine and the graphics API being used.
+ */
+typedef void* TextureData;

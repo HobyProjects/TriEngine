@@ -79,6 +79,7 @@ set(
         ${TE_SRC_DIR}/APIs/OpenGL/GL_SystemInfo.hpp
         ${TE_SRC_DIR}/APIs/OpenGL/GL_Shader.hpp
         ${TE_SRC_DIR}/APIs/OpenGL/GL_VertexArray.hpp
+        ${TE_SRC_DIR}/APIs/OpenGL/GL_Texture2D.hpp
 
         # APIS - GLFW
         ${TE_SRC_DIR}/APIs/GLFW/GLFW.hpp
@@ -92,6 +93,7 @@ set(
         ${TE_SRC_DIR}/Renderer/Context.hpp
         ${TE_SRC_DIR}/Renderer/Shaders.hpp
         ${TE_SRC_DIR}/Renderer/VertexArray.hpp
+        ${TE_SRC_DIR}/Renderer/Texture2D.hpp
 )
 
 set(
@@ -120,6 +122,7 @@ set(
         ${TE_SRC_DIR}/APIs/OpenGL/GL_SystemInfo.cpp
         ${TE_SRC_DIR}/APIs/OpenGL/GL_Shader.cpp
         ${TE_SRC_DIR}/APIs/OpenGL/GL_VertexArray.cpp
+        ${TE_SRC_DIR}/APIs/OpenGL/GL_Texture2D.cpp
           
         # APIS - GLFW
         ${TE_SRC_DIR}/APIs/GLFW/GLFW_Window.cpp
@@ -132,6 +135,7 @@ set(
         ${TE_SRC_DIR}/Renderer/Context.cpp
         ${TE_SRC_DIR}/Renderer/Shaders.cpp
         ${TE_SRC_DIR}/Renderer/VertexArray.cpp
+        ${TE_SRC_DIR}/Renderer/Texture2D.cpp
 
 )
 
