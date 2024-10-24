@@ -52,7 +52,7 @@ namespace TE::Renderer
              *
              * @return The width of the texture
              */
-            virtual UInt32 GetWidth() const = 0;
+            virtual Int32 GetWidth() const = 0;
 
             /**
              * @brief Get the height of the texture
@@ -61,7 +61,7 @@ namespace TE::Renderer
              *
              * @return The height of the texture
              */
-            virtual UInt32 GetHeight() const = 0;
+            virtual Int32 GetHeight() const = 0;
 
             /**
              * @brief Get the number of channels in the texture
@@ -70,7 +70,7 @@ namespace TE::Renderer
              *
              * @return The number of channels in the texture
              */
-            virtual UInt32 GetChannels() const = 0;
+            virtual Int32 GetChannels() const = 0;
 
             /**
              * @brief Get the internal format of the texture
@@ -151,4 +151,47 @@ namespace TE::Renderer
              */
             virtual UInt32 GetDataFormat() const = 0;
     };
+
+
+    /**
+     * @brief Create a new 2D texture
+     *
+     * This function creates a new 2D texture with the specified width and height.
+     *
+     * @param width  The width of the texture
+     * @param height The height of the texture
+     *
+     * @return A shared_ptr to the newly created 2D texture
+     */
+    std::shared_ptr<Texture2D> CreateTexture2D(Int32 width, Int32 height);
+
+    /**
+     * @brief Create a new 2D texture from an image file
+     *
+     * This function creates a new 2D texture from the specified image file. The
+     * image is loaded using the stb_image library.
+     *
+     * @param path The path to the image file
+     * @param flip If true, the image is flipped vertically
+     *
+     * @return A shared_ptr to the newly created 2D texture
+     */
+    std::shared_ptr<Texture2D> CreateTexture2D(const Path& path, bool flip = true);
+
+    /**
+     * @brief Create a new subtexture from a texture
+     *
+     * This function creates a new subtexture from the specified texture. The
+     * subtexture is defined by the specified coordinates, cell size, and sprite
+     * size.
+     *
+     * @param texture   The texture to create the subtexture from
+     * @param coords    The coordinates of the top left corner of the subtexture
+     * @param cellSize  The size of each cell in the texture
+     * @param spriteSize The size of the sprite in the texture
+     *
+     * @return A shared_ptr to the newly created subtexture
+     */
+    std::shared_ptr<SubTexture2D> CreateSubTexture2D(const std::shared_ptr<Texture2D>& texture, const Vec2& coords, const Vec2& cellSize, const Vec2& spriteSize);
+
 }

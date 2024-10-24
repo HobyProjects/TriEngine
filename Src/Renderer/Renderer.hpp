@@ -1,7 +1,7 @@
 #pragma once
 
+#include "Base.hpp"
 #include "TypeDef.hpp"
-#include <glm/glm.hpp>
 
 namespace TE::Renderer
 {

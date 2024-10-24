@@ -34,11 +34,6 @@ set(
         ${TE_SRC_DIR}/Editor
         ${TE_SRC_DIR}/Maths
         ${TE_SRC_DIR}/APIs
-        ${TE_SRC_DIR}/APIs/OpenGL
-        ${TE_SRC_DIR}/APIs/Vulkan
-        ${TE_SRC_DIR}/APIs/DirectX
-        ${TE_SRC_DIR}/APIs/GLFW
-        ${TE_SRC_DIR}/APIs/ImGui/GLFW
         ${TE_SRC_DIR}/Renderer
 )
 

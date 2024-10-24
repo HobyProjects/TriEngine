@@ -1,7 +1,7 @@
 #include "Renderer.hpp"
 #include "Asserts.hpp"
 
-#include "OpenGL.hpp"
+#include "OpenGL/OpenGL.hpp"
 
 namespace TE::Renderer
 {

@@ -1,4 +1,4 @@
-#include "OpenGL.hpp"
+#include "OpenGL/OpenGL.hpp"
 #include "Renderer.hpp"
 #include "Buffers.hpp"
 

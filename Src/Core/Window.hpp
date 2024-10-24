@@ -3,7 +3,7 @@
 #include <string>
 #include <memory>
 
-#include "OpenGL.hpp"
+#include "OpenGL/OpenGL.hpp"
 #include "Renderer.hpp"
 #include "Context.hpp"
 #include "TypeDef.hpp"

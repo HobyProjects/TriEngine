@@ -7,3 +7,4 @@
 #include "GL_Shader.hpp"
 #include "GL_SystemInfo.hpp"
 #include "GL_VertexArray.hpp"
+#include "GL_Texture2D.hpp"

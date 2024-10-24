@@ -1,7 +1,7 @@
 #include "Context.hpp"
 
 #include "Renderer.hpp"
-#include "OpenGL.hpp"
+#include "OpenGL/OpenGL.hpp"
 
 namespace TE::Renderer
 {

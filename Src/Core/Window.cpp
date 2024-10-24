@@ -1,6 +1,6 @@
 #include "Window.hpp"
 
-#include "GLFW.hpp"
+#include "GLFW/GLFW.hpp"
 
 namespace TE::Core
 {
