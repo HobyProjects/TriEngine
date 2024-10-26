@@ -1,6 +1,6 @@
 #include "Renderer.hpp"
+
 #include "OpenGL/OpenGL.hpp"
-#include "VertexArray.hpp"
 
 namespace TE::Renderer
 {
