@@ -2,29 +2,52 @@
 
 namespace TE::Renderer
 {
-    Camera2D::Camera2D(float left, float right, float bottom, float top){
-        m_Projection = glm::ortho(left, right, bottom, top, -1.0f, 1.0f);
-        m_ViewProjection = m_Projection * m_View;
+    Camera2D::Camera2D(Float size, Float nearClip, Float farClip)
+    {
+        m_OrthographicSize      = size;
+        m_OrthographicNear      = nearClip;
+        m_OrthographicFar       = farClip;
+        RefreshViewProjectionMatrix();
     }
 
-    void Camera2D::SetRotation(float rotation){
+    void Camera2D::SetAspectRatio(Float ratio)
+    {
+        m_AspectRatio = ratio;
+        RefreshViewProjectionMatrix();
+    }
+
+    void Camera2D::SetRotation(Float rotation)
+    {
         m_Rotation = rotation;
-        RecalculateViewMatrix();
+        RefreshViewProjectionMatrix();
     }
 
-    void Camera2D::SetPosition(const Vec3& position){
+    void Camera2D::SetPosition(const Vec3& position)
+    {
         m_Position = position;
-        RecalculateViewMatrix();
+        RefreshViewProjectionMatrix();
     }
 
-    void Camera2D::SetProjection(float left, float right, float bottom, float top){
-        m_Projection = glm::ortho(left, right, bottom, top, -1.0f, 1.0f);
-        m_ViewProjection = m_Projection * m_View;
+    void Camera2D::SetProjection(Float size, Float nearClip, Float farClip)
+    {
+        m_OrthographicSize      = size;
+        m_OrthographicNear      = nearClip;
+        m_OrthographicFar       = farClip;
+        RefreshViewProjectionMatrix();
     }
 
-    void Camera2D::RecalculateViewMatrix(){
-        Mat4 transform = glm::translate(glm::mat4(1.0f), m_Position) * glm::rotate(glm::mat4(1.0f), glm::radians(m_Rotation), {0.0f, 0.0f, 1.0f});
-        Mat4 view = glm::inverse(transform);
-        m_ViewProjection = view * m_Projection;
+    void Camera2D::RefreshViewProjectionMatrix()
+    {
+        Mat4 transform = Maths::translate(Mat4(1.0f), m_Position) * Maths::rotate(Mat4(1.0f), Maths::radians(m_Rotation), {0.0f, 0.0f, 1.0f});
+        m_View = Maths::inverse(transform);
+
+        float left      = -m_OrthographicSize * m_AspectRatio * 0.5f;
+        float right     =  m_OrthographicSize * m_AspectRatio * 0.5f;
+        float top       =  m_OrthographicSize * 0.5f;
+        float bottom    = -m_OrthographicSize * 0.5f;
+        m_Projection    =  Maths::ortho(left, right, bottom, top, m_OrthographicNear, m_OrthographicFar);
+
+        m_ViewProjection = m_View * m_Projection;
     }
+
 }

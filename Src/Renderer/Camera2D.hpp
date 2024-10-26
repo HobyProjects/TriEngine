@@ -1,165 +1,194 @@
 #pragma once
 
 #include "TypeDef.hpp"
+#include "Camera.hpp"
 
 namespace TE::Renderer
 {
     /**
      * @class Camera2D
      *
-     * @brief A class that represents a 2D camera
+     * @brief A class to represent a 2D camera
      *
      * This class is used to represent a 2D camera. It provides functions to
-     * set the rotation and position of the camera, set the projection of the
-     * camera, and get the view matrix, projection matrix, and view projection
-     * matrix.
+     * calculate the view matrix, calculate the projection matrix, and get the
+     * view projection matrix.
      */
-    class Camera2D 
+    class Camera2D : public Camera
     {
         public:
             /**
              * @brief Default constructor
              *
-             * The default constructor initializes the camera with a default
-             * projection and a default position and rotation.
+             * Initializes the camera with a default size of 10.0f and a default
+             * near and far clip value of -1.0f and 1.0f respectively.
              */
             Camera2D() = default;
 
             /**
-             * @brief Constructor that takes a left, right, bottom, and top
+             * @brief Constructor
              *
-             * This constructor initializes the camera with the given left,
-             * right, bottom, and top values for the projection. The position
-             * and rotation are set to the default values.
+             * Initializes the camera with a specified size, near clip, and far
+             * clip values.
              *
-             * @param left The left side of the projection
-             * @param right The right side of the projection
-             * @param bottom The bottom side of the projection
-             * @param top The top side of the projection
+             * @param size The size of the camera.
+             * @param nearClip The near clip value of the camera.
+             * @param farClip The far clip value of the camera.
              */
-            Camera2D(float left, float right, float bottom, float top);
+            Camera2D(Float size = 10.0f, Float nearClip = -1.0f, Float farClip = 1.0f);
 
             /**
              * @brief Destructor
              *
-             * The destructor is trivial and does nothing.
+             * Does nothing.
              */
-            ~Camera2D() = default;
+            virtual ~Camera2D() = default;
+
+            /**
+             * @brief Gets the type of camera
+             *
+             * Returns the type of camera as CameraType::Camera_2D.
+             *
+             * @return The type of camera.
+             */
+            CameraType GetCameraType() const { return CameraType::Camera_2D; }
+
+            /**
+             * @brief Sets the aspect ratio of the camera
+             *
+             * Sets the aspect ratio of the camera to the specified value.
+             *
+             * @param ratio The aspect ratio of the camera.
+             */
+            void SetAspectRatio(Float ratio);
 
             /**
              * @brief Sets the rotation of the camera
              *
-             * This function sets the rotation of the camera to the given
-             * value.
+             * Sets the rotation of the camera to the specified value.
              *
-             * @param rotation The new rotation of the camera
+             * @param rotation The rotation of the camera in degrees.
              */
-            void SetRotation(float rotation);
+            void SetRotation(Float rotation);
 
             /**
              * @brief Sets the position of the camera
              *
-             * This function sets the position of the camera to the given
-             * value.
+             * Sets the position of the camera to the specified value.
              *
-             * @param position The new position of the camera
+             * @param position The position of the camera.
              */
             void SetPosition(const Vec3& position);
 
             /**
              * @brief Sets the projection of the camera
              *
-             * This function sets the projection of the camera to the given
-             * left, right, bottom, and top values.
+             * Sets the projection of the camera to the specified values.
              *
-             * @param left The left side of the projection
-             * @param right The right side of the projection
-             * @param bottom The bottom side of the projection
-             * @param top The top side of the projection
+             * @param size The size of the camera.
+             * @param nearClip The near clip value of the camera.
+             * @param farClip The far clip value of the camera.
              */
-            void SetProjection(float left, float right, float bottom, float top);
+            void SetProjection(Float size = 10.0f, Float nearClip = -1.0f, Float farClip = 1.0f);
 
             /**
-             * @brief Gets the view matrix
+             * @brief Gets the view matrix of the camera
              *
-             * This function returns a reference to the view matrix of the
-             * camera.
+             * Returns the view matrix of the camera.
              *
-             * @return A reference to the view matrix
+             * @return The view matrix of the camera.
              */
-            const Mat4& ViewMatrix() const { return m_View; }
+            const Mat4& GetView() const { return m_View; }
 
             /**
-             * @brief Gets the projection matrix
+             * @brief Gets the projection matrix of the camera
              *
-             * This function returns a reference to the projection matrix of
-             * the camera.
+             * Returns the projection matrix of the camera.
              *
-             * @return A reference to the projection matrix
+             * @return The projection matrix of the camera.
              */
-            const Mat4& ProjectionMatrix() const { return m_Projection; }
+            const Mat4& GetProjection() const { return m_Projection; }
 
             /**
-             * @brief Gets the view projection matrix
+             * @brief Gets the view projection matrix of the camera
              *
-             * This function returns a reference to the view projection matrix
-             * of the camera.
+             * Returns the view projection matrix of the camera.
              *
-             * @return A reference to the view projection matrix
+             * @return The view projection matrix of the camera.
              */
-            const Mat4& ViewProjectionMatrix() const { return m_ViewProjection; }
+            const Mat4& GetViewProjection() const { return m_ViewProjection; }
+
+            /**
+             * @brief Gets the size of the camera
+             *
+             * Returns the size of the camera.
+             *
+             * @return The size of the camera.
+             */
+            Float GetSize() const { return m_OrthographicSize; }
+
+            /**
+             * @brief Gets the near clip value of the camera
+             *
+             * Returns the near clip value of the camera.
+             *
+             * @return The near clip value of the camera.
+             */
+            Float GetNearClip() const { return m_OrthographicNear; }
+
+            /**
+             * @brief Gets the far clip value of the camera
+             *
+             * Returns the far clip value of the camera.
+             *
+             * @return The far clip value of the camera.
+             */
+            Float GetFarClip() const { return m_OrthographicFar; }
 
         private:
             /**
-             * @brief Recalculates the view matrix
+             * @brief Refreshes the view projection matrix
              *
-             * This function is used to recalculate the view matrix when the
-             * position or rotation of the camera changes.
+             * Recalculates the view projection matrix based on the current
+             * camera properties.
              */
-            void RecalculateViewMatrix();
+            void RefreshViewProjectionMatrix();
 
         private:
             /**
-             * @brief The view matrix
+             * @brief The aspect ratio of the camera
              *
-             * This is the view matrix of the camera. It is recalculated when
-             * the position or rotation of the camera changes.
+             * The aspect ratio of the camera.
              */
-            Mat4 m_View{1.0f};
+            Float m_AspectRatio{1.0f};
 
             /**
-             * @brief The projection matrix
+             * @brief The size of the camera
              *
-             * This is the projection matrix of the camera. It is set when the
-             * camera is created and can be changed with the SetProjection
-             * function.
+             * The size of the camera.
              */
-            Mat4 m_Projection{1.0f};
+            Float m_OrthographicSize{10.0f};
 
             /**
-             * @brief The view projection matrix
+             * @brief The near clip value of the camera
              *
-             * This is the view projection matrix of the camera. It is
-             * calculated by multiplying the view matrix and the projection
-             * matrix.
+             * The near clip value of the camera.
+             */
+            Float m_OrthographicNear{-1000.0f};
+
+            /**
+             * @brief The far clip value of the camera
+             *
+             * The far clip value of the camera.
+             */
+            Float m_OrthographicFar{1000.0f};
+
+            /**
+             * @brief The view projection matrix of the camera
+             *
+             * The view projection matrix of the camera.
              */
             Mat4 m_ViewProjection{1.0f};
-
-            /**
-             * @brief The position of the camera
-             *
-             * This is the position of the camera. It can be changed with the
-             * SetPosition function.
-             */
-            Vec3 m_Position{0.0f};
-
-            /**
-             * @brief The rotation of the camera
-             *
-             * This is the rotation of the camera. It can be changed with the
-             * SetRotation function.
-             */
-            float m_Rotation{0.0f};
     };
 
 }

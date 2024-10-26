@@ -91,6 +91,7 @@ set(
         ${TE_SRC_DIR}/Renderer/Texture2D.hpp
         ${TE_SRC_DIR}/Renderer/Camera.hpp
         ${TE_SRC_DIR}/Renderer/Camera2D.hpp
+        ${TE_SRC_DIR}/Renderer/Camera3D.hpp
 )
 
 set(
@@ -134,6 +135,7 @@ set(
         ${TE_SRC_DIR}/Renderer/VertexArray.cpp
         ${TE_SRC_DIR}/Renderer/Texture2D.cpp
         ${TE_SRC_DIR}/Renderer/Camera2D.cpp
+        ${TE_SRC_DIR}/Renderer/Camera3D.cpp
 
 )
 

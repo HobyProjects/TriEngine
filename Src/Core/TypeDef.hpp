@@ -34,7 +34,7 @@ typedef unsigned int UInt32;        // A 32-bit unsigned integer
 typedef unsigned short UInt16;      // A 16-bit unsigned integer
 typedef unsigned char UInt8;        // An 8-bit unsigned integer
 typedef char Int8;                  // An 8-bit signed integer
-typedef float Float32;              // A 32-bit floating-point number
+typedef float Float;              // A 32-bit floating-point number
 typedef double Float64;             // A 64-bit floating-point number
 typedef std::string String;         // A string of characters
 typedef std::filesystem::path Path; // A path to a file
@@ -165,6 +165,17 @@ typedef glm::dmat4 DMat4;
  * space with high precision.
  */
 typedef glm::dquat DQuat;
+
+/**
+ * @namespace Maths
+ * @brief An alias for the glm namespace, providing mathematical functions and types.
+ *
+ * The Maths namespace is an alias for the glm namespace, which provides
+ * functions and types for mathematical operations, including vectors, matrices,
+ * and quaternions. This alias is used throughout the engine to simplify the
+ * usage of glm types and functions.
+ */
+namespace Maths = glm;
 
 //==============================================================================
 
