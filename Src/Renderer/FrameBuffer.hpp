@@ -28,4 +28,6 @@ namespace TE::Renderer
         protected:
             virtual void CreateFrame() = TE_NULL;
     };
+
+    Ref<IFrameBuffer> CreateFrameBuffer(const FrameBufferSpecifications& specification);
 }
