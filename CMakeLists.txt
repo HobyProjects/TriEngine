@@ -75,6 +75,8 @@ set(
         ${TE_SRC_DIR}/APIs/OpenGL/GL_Shader.hpp
         ${TE_SRC_DIR}/APIs/OpenGL/GL_VertexArray.hpp
         ${TE_SRC_DIR}/APIs/OpenGL/GL_Texture2D.hpp
+        ${TE_SRC_DIR}/APIs/OpenGL/GL_FrameBuffer.hpp
+
 
         # APIS - GLFW
         ${TE_SRC_DIR}/APIs/GLFW/GLFW.hpp
@@ -92,6 +94,7 @@ set(
         ${TE_SRC_DIR}/Renderer/Camera.hpp
         ${TE_SRC_DIR}/Renderer/Camera2D.hpp
         ${TE_SRC_DIR}/Renderer/Camera3D.hpp
+        ${TE_SRC_DIR}/Renderer/FrameBuffer.hpp
 )
 
 set(
@@ -121,6 +124,7 @@ set(
         ${TE_SRC_DIR}/APIs/OpenGL/GL_Shader.cpp
         ${TE_SRC_DIR}/APIs/OpenGL/GL_VertexArray.cpp
         ${TE_SRC_DIR}/APIs/OpenGL/GL_Texture2D.cpp
+        ${TE_SRC_DIR}/APIs/OpenGL/GL_FrameBuffer.cpp
           
         # APIS - GLFW
         ${TE_SRC_DIR}/APIs/GLFW/GLFW_Window.cpp
@@ -136,6 +140,7 @@ set(
         ${TE_SRC_DIR}/Renderer/Texture2D.cpp
         ${TE_SRC_DIR}/Renderer/Camera2D.cpp
         ${TE_SRC_DIR}/Renderer/Camera3D.cpp
+        ${TE_SRC_DIR}/Renderer/FrameBuffer.cpp
 
 )
 

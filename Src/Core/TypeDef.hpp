@@ -34,12 +34,17 @@ typedef unsigned int UInt32;        // A 32-bit unsigned integer
 typedef unsigned short UInt16;      // A 16-bit unsigned integer
 typedef unsigned char UInt8;        // An 8-bit unsigned integer
 typedef char Int8;                  // An 8-bit signed integer
-typedef float Float;              // A 32-bit floating-point number
+typedef float Float;                // A 32-bit floating-point number
 typedef double Float64;             // A 64-bit floating-point number
 typedef std::string String;         // A string of characters
 typedef std::filesystem::path Path; // A path to a file
 typedef std::ifstream InputFile;    // A file stream
 typedef void* WindowAPIPtr;         // A pointer to a window
+typedef bool Boolean;               // A boolean
+
+#define TE_TRUE 1
+#define TE_FALSE 0
+#define TE_NULL (void*)0
 
 //==============================================================================
 
@@ -275,3 +280,25 @@ typedef unsigned int TextureID;
  * can vary depending on the engine and the graphics API being used.
  */
 typedef void* TextureData;
+
+/**
+ * @brief A type definition for a frame buffer ID
+ *
+ * This type definition is used to identify a frame buffer in the engine. It
+ * is an unsigned integer, which is used to index into an array of frame
+ * buffers.
+ */
+typedef unsigned int FrameBufferID;
+
+/**
+ * @brief A type definition for a frame buffer attachment ID
+ *
+ * This type definition is used to identify a frame buffer attachment in the
+ * engine. It is an unsigned integer, which is used to index into an array of
+ * frame buffer attachments.
+ *
+ * A frame buffer attachment is a resource that is attached to a frame buffer.
+ * Examples of frame buffer attachments include textures, render buffers, and
+ * other types of buffers.
+ */
+typedef unsigned int FrameBufferAttachmentID;
