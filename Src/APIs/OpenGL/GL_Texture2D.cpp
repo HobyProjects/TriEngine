@@ -29,7 +29,7 @@ namespace TE::APIs::OpenGL
 
     }
 
-    GL_Texture2D::GL_Texture2D(const Path& path, bool flip)
+    GL_Texture2D::GL_Texture2D(const Path& path, Boolean flip)
     {
         if(!std::filesystem::exists(path))
         {
@@ -65,7 +65,7 @@ namespace TE::APIs::OpenGL
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 		glTexImage2D(GL_TEXTURE_2D, 0, m_InternalFormat, m_Width, m_Height, 0, m_DataFormat, GL_UNSIGNED_BYTE, m_Data);
 		glGenerateMipmap(GL_TEXTURE_2D);
-		m_FromImageFile = true;
+		m_FromImageFile = TE_TRUE;
     }
 
     GL_Texture2D::~GL_Texture2D()
@@ -85,7 +85,7 @@ namespace TE::APIs::OpenGL
     }
 
 
-    GL_SubTexture2D::GL_SubTexture2D(const std::shared_ptr<TE::Renderer::Texture2D>& texture, const Vec2 & min, const Vec2 & max)
+    GL_SubTexture2D::GL_SubTexture2D(const Ref<TE::Renderer::ITexture2D>& texture, const Vec2& min, const Vec2& max)
     {
         m_Texture = texture;
         m_TexCoords[0] = { min.x, min.y };

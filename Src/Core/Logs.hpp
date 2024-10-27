@@ -7,30 +7,16 @@
 #include <spdlog/fmt/ostr.h>
 #pragma warning(pop)
 
+#include "TypeDef.hpp"
+
 namespace TE::Core
 {
-    /**
-     * @brief The LogSystem class is a wrapper around spdlog to initialize and use loggers in the Trimana Engine.
-     */
     class LogSystem
     {
         public:
-            /**
-             * @brief Initializes the loggers to use in the Trimana Engine.
-             */
             static void Init();
-
-            /**
-             * @brief Returns the core logger of the Trimana Engine.
-             * @return The core logger of the Trimana Engine.
-             */
-            static std::shared_ptr<spdlog::logger>& GetCoreLogger();
-
-            /**
-             * @brief Returns the client logger of the Trimana Engine.
-             * @return The client logger of the Trimana Engine.
-             */
-            static std::shared_ptr<spdlog::logger>& GetClientLogger();
+            static Ref<spdlog::logger>& GetCoreLogger();
+            static Ref<spdlog::logger>& GetClientLogger();
     };
 
 }

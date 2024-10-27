@@ -2,7 +2,7 @@
 
 namespace TE::APIs::GLFW
 {
-    static std::shared_ptr<TE::Core::Window> s_Window = nullptr;
+    static Ref<TE::Core::IWindow> s_Window = nullptr;
     static TE::Events::EventCallback s_EventCallback;
 
     static void SetCallBacks()
@@ -92,12 +92,12 @@ namespace TE::APIs::GLFW
         glfwSetMouseButtonCallback((GLFWwindow*)s_Window->GetNativeWindow(), [](GLFWwindow* window, int button, int action, int mods) 
         {
             if(action == GLFW_PRESS) {
-                TE::Events::MouseButtonPressEvent mouseButtonPress(button);
+                TE::Events::MouseButtonPressEvent mouseButtonPress(static_cast<TE::Core::MouseButton>(button));
                 s_EventCallback(mouseButtonPress);
             } 
 
             if(action == GLFW_RELEASE) {
-                TE::Events::MouseButtonReleaseEvent mouseButtonRelease(button);
+                TE::Events::MouseButtonReleaseEvent mouseButtonRelease(static_cast<TE::Core::MouseButton>(button));
                 s_EventCallback(mouseButtonRelease);
             }
         });
@@ -127,12 +127,12 @@ namespace TE::APIs::GLFW
         });
     }
 
-    void GLFW_EventsReceiver::PollEvents()
+    void GLFWAPI_EventReceiver::PollEvents()
     {
         glfwWaitEvents();
     }
 
-    void GLFW_EventsReceiver::SetCallbackWindow(const std::shared_ptr<TE::Core::Window>& window, const TE::Events::EventCallback & eventsCallback)
+    void GLFWAPI_EventReceiver::SetCallbackWindow(const Ref<TE::Core::IWindow>& window, const TE::Events::EventCallback & eventsCallback)
     {
         s_Window = window;
         s_EventCallback = eventsCallback;

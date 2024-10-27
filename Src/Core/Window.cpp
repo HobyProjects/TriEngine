@@ -4,11 +4,12 @@
 
 namespace TE::Core
 {
-    std::shared_ptr<Window> CreateWindow(const String & title, WindowAPI api)
+    Ref<IWindow> CreateWindow(const String& title, ServiceAPI api)
     {
         switch(api)
         {
-            case WindowAPI::GLFW_API:               return std::make_shared<TE::APIs::GLFW::GLFW_Window>(title);
+            case ServiceAPI::API_GLFW:               return CreateRef<TE::APIs::GLFW::GLFWAPI_Window>(title);
+            case ServiceAPI::API_SDL:                TRIMANA_ASSERT(TE_FALSE, "SDL is not supported yet!");
             default:                                return nullptr;
         }
     };

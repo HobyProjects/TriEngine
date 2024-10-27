@@ -4,15 +4,15 @@
 
 namespace TE::Core
 {
-    static bool s_Initialized = false;
+    static Boolean s_Initialized = TE_FALSE;
     static std::shared_ptr<spdlog::logger> s_CoreLogger = nullptr;
     static std::shared_ptr<spdlog::logger> s_ClientLogger = nullptr;
 
     void LogSystem::Init()
     {
         std::vector<spdlog::sink_ptr> log_skin{};
-        log_skin.emplace_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
-        log_skin.emplace_back(std::make_shared<spdlog::sinks::basic_file_sink_mt>("TE.log", true));
+        log_skin.emplace_back(CreateRef<spdlog::sinks::stdout_color_sink_mt>());
+        log_skin.emplace_back(CreateRef<spdlog::sinks::basic_file_sink_mt>("TE.log", true));
         log_skin[0]->set_pattern("%^[%T] %n: %v%$");
         log_skin[1]->set_pattern("[%T][%l] %n: %v");
 

@@ -144,11 +144,6 @@ namespace TE::Core
         KEY_UNKNOWN         = 0
 	};
 
-    /**
-     * @brief Enum representing the state of a key.
-     * 
-     * This enum defines the possible states of a key, such as pressed, released, or repeated.
-     */
     enum KeyState : Int32
     {
         KEY_PRESSED     = 1,  ///< The key is pressed.
@@ -156,11 +151,6 @@ namespace TE::Core
         KEY_REPEAT      = 2   ///< The key is being repeated.
     };
 
-    /**
-     * @brief Enum representing the mouse buttons.
-     * 
-     * This enum defines the different mouse buttons that can be used in the framework.
-     */
     enum MouseButton : Int32 
     {
         /**
@@ -177,11 +167,6 @@ namespace TE::Core
         MOUSE_BUTTON_MIDDLE = 2
     };
 
-    /**
-     * @brief Enum representing the state of a mouse button.
-     * 
-     * This enum defines the possible states of a mouse button, such as pressed or released.
-     */
     enum MouseButtonState : Int32
     {
         MOUSE_BUTTON_PRESSED     = 1,    ///< The mouse button is pressed.

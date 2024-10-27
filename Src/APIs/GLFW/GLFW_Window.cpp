@@ -2,7 +2,7 @@
 
 namespace TE::APIs::GLFW
 {
-    bool GLFW_API::Init()
+    Boolean GLFWServiceAPI::Init()
     {
         if(!glfwInit()){
             TE_CORE_CRITICAL("GLFW initialization failed");
@@ -13,12 +13,12 @@ namespace TE::APIs::GLFW
         return true;
     }
 
-    void GLFW_API::Shutdown()
+    void GLFWServiceAPI::Shutdown()
     {
         glfwTerminate();
     }
 
-    GLFW_Window::GLFW_Window(const String& title)
+    GLFWAPI_Window::GLFWAPI_Window(const String& title)
     {
         TE_CORE_INFO("GLFW: Initialized");
         const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
@@ -95,13 +95,13 @@ namespace TE::APIs::GLFW
         glfwTerminate();
     }
 
-    GLFW_Window::~GLFW_Window()
+    GLFWAPI_Window::~GLFWAPI_Window()
     {
         if(m_NativeWindow != nullptr)
             glfwDestroyWindow(m_NativeWindow);
     }
 
-    void GLFW_Window::SwapBuffers()
+    void GLFWAPI_Window::SwapBuffers()
     {
         if(m_Specification.IsActive && m_Specification.IsVSyncEnabled)
             m_Context->SwapBuffers();

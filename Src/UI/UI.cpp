@@ -3,7 +3,7 @@
 
 namespace TE::UI
 {
-    UILayer::UILayer(std::shared_ptr<TE::Core::Window> window, TE::Core::WindowAPI windowApi, UITheme theme)
+    UILayer::UILayer(Ref<TE::Core::IWindow> window, TE::Core::ServiceAPI windowApi, UITheme theme)
         : TE::Core::Layer("UILayer"), m_Window(window), m_Theme(theme), m_WindowApi(windowApi)
     {
     }
@@ -22,26 +22,26 @@ namespace TE::UI
 
         UInt32 UI_init = (UInt32)(TE::Renderer::Renderer::GetAPI()) | (UInt32)(m_WindowApi);
 
-        if(UI_init == (UInt32)TE::Renderer::RendererAPI::None | (UInt32)TE::Core::WindowAPI::None)
+        if(UI_init == (UInt32)TE::Renderer::RendererAPI::None | (UInt32)TE::Core::ServiceAPI::API_None)
         {
             TRIMANA_ASSERT(false, "No rendering API selected");
             return;
         }
 
-        if(UI_init == (UInt32)TE::Renderer::RendererAPI::OpenGL | (UInt32)TE::Core::WindowAPI::GLFW_API)
+        if(UI_init == (UInt32)TE::Renderer::RendererAPI::OpenGL | (UInt32)TE::Core::ServiceAPI::API_GLFW)
         {
             TE_CORE_INFO("Initializing ImGui for OpenGL");
             ImGui_ImplGlfw_InitForOpenGL((GLFWwindow*)m_Window->GetNativeWindow(), true);
             ImGui_ImplOpenGL3_Init("#version 430");
         }
 
-        if(UI_init == (UInt32)TE::Renderer::RendererAPI::Vulkan | (UInt32)TE::Core::WindowAPI::GLFW_API)
+        if(UI_init == (UInt32)TE::Renderer::RendererAPI::Vulkan | (UInt32)TE::Core::ServiceAPI::API_GLFW)
         {
             TRIMANA_ASSERT(false, "Not implemented yet");
             return;
         }
 
-        if(UI_init == (UInt32)TE::Renderer::RendererAPI::DirectX | (UInt32)TE::Core::WindowAPI::GLFW_API)
+        if(UI_init == (UInt32)TE::Renderer::RendererAPI::DirectX | (UInt32)TE::Core::ServiceAPI::API_GLFW)
         {
             TRIMANA_ASSERT(false, "Not implemented yet");
             return;
@@ -53,13 +53,13 @@ namespace TE::UI
     {
         UInt32 UI = (UInt32)(TE::Renderer::Renderer::GetAPI()) | (UInt32)(m_WindowApi);
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::None | (UInt32)TE::Core::WindowAPI::None)
+        if(UI == (UInt32)TE::Renderer::RendererAPI::None | (UInt32)TE::Core::ServiceAPI::API_None)
         {
             TRIMANA_ASSERT(false, "No rendering API selected");
             return;
         }
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::OpenGL | (UInt32)TE::Core::WindowAPI::GLFW_API)
+        if(UI == (UInt32)TE::Renderer::RendererAPI::OpenGL | (UInt32)TE::Core::ServiceAPI::API_GLFW)
         {
             TE_CORE_INFO("Shutting down ImGui for OpenGL");
             ImGui_ImplOpenGL3_Shutdown();
@@ -67,13 +67,13 @@ namespace TE::UI
             ImGui::DestroyContext();
         }
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::Vulkan | (UInt32)TE::Core::WindowAPI::GLFW_API)
+        if(UI == (UInt32)TE::Renderer::RendererAPI::Vulkan | (UInt32)TE::Core::ServiceAPI::API_GLFW)
         {
             TRIMANA_ASSERT(false, "Not implemented yet");
             return;
         }
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::DirectX | (UInt32)TE::Core::WindowAPI::GLFW_API)
+        if(UI == (UInt32)TE::Renderer::RendererAPI::DirectX | (UInt32)TE::Core::ServiceAPI::API_GLFW)
         {
             TRIMANA_ASSERT(false, "Not implemented yet");
             return;
@@ -94,26 +94,26 @@ namespace TE::UI
     {
         UInt32 UI = (UInt32)(TE::Renderer::Renderer::GetAPI()) | (UInt32)(m_WindowApi);
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::None | (UInt32)TE::Core::WindowAPI::None)
+        if(UI == (UInt32)TE::Renderer::RendererAPI::None | (UInt32)TE::Core::ServiceAPI::API_None)
         {
             TRIMANA_ASSERT(false, "No rendering API selected");
             return;
         }
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::OpenGL | (UInt32)TE::Core::WindowAPI::GLFW_API)
+        if(UI == (UInt32)TE::Renderer::RendererAPI::OpenGL | (UInt32)TE::Core::ServiceAPI::API_GLFW)
         {
             ImGui_ImplOpenGL3_NewFrame();
             ImGui_ImplGlfw_NewFrame();
             ImGui::NewFrame();
         }
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::Vulkan | (UInt32)TE::Core::WindowAPI::GLFW_API)
+        if(UI == (UInt32)TE::Renderer::RendererAPI::Vulkan | (UInt32)TE::Core::ServiceAPI::API_GLFW)
         {
             TRIMANA_ASSERT(false, "Not implemented yet");
             return;
         }
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::DirectX | (UInt32)TE::Core::WindowAPI::GLFW_API)
+        if(UI == (UInt32)TE::Renderer::RendererAPI::DirectX | (UInt32)TE::Core::ServiceAPI::API_GLFW)
         {
             TRIMANA_ASSERT(false, "Not implemented yet");
             return;
@@ -130,13 +130,13 @@ namespace TE::UI
         ImGui::Render();
         UInt32 UI = (UInt32)(TE::Renderer::Renderer::GetAPI()) | (UInt32)(m_WindowApi);
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::None | (UInt32)TE::Core::WindowAPI::None)
+        if(UI == (UInt32)TE::Renderer::RendererAPI::None | (UInt32)TE::Core::ServiceAPI::API_None)
         {
             TRIMANA_ASSERT(false, "No rendering API selected");
             return;
         }
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::OpenGL | (UInt32)TE::Core::WindowAPI::GLFW_API)
+        if(UI == (UInt32)TE::Renderer::RendererAPI::OpenGL | (UInt32)TE::Core::ServiceAPI::API_GLFW)
         {
             ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
             if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
@@ -148,20 +148,20 @@ namespace TE::UI
             } 
         }
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::Vulkan | (UInt32)TE::Core::WindowAPI::GLFW_API)
+        if(UI == (UInt32)TE::Renderer::RendererAPI::Vulkan | (UInt32)TE::Core::ServiceAPI::API_GLFW)
         {
             TRIMANA_ASSERT(false, "Not implemented yet");
             return;
         }
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::DirectX | (UInt32)TE::Core::WindowAPI::GLFW_API)
+        if(UI == (UInt32)TE::Renderer::RendererAPI::DirectX | (UInt32)TE::Core::ServiceAPI::API_GLFW)
         {
             TRIMANA_ASSERT(false, "Not implemented yet");
             return;
         }
     }
 
-    void UILayer::AllowEvents(bool allowEvents)
+    void UILayer::AllowEvents(Boolean allowEvents)
     {
         m_AllowEvents = allowEvents;
     }

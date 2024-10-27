@@ -27,7 +27,7 @@ namespace TE::APIs::OpenGL
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 
-    void GL_Renderer::ClearColor(const glm::vec4& color)
+    void GL_Renderer::ClearColor(const Vec4& color)
     {
         glClearColor(color.r, color.g, color.b, color.a);
     }

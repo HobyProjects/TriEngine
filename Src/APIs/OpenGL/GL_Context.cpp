@@ -4,11 +4,11 @@
 
 namespace TE::APIs::OpenGL
 {
-    GL_Context::GL_Context(GLFWwindow * window): m_Window(window)
+    GL_Context::GL_Context(GLFWwindow* window): m_Window(window)
     {
     }
 
-    bool GL_Context::MakeContextCurrent()
+    Boolean GL_Context::MakeContextCurrent()
     {
         TRIMANA_ASSERT(m_Window, "GL_Context::MakeContextCurrent: m_Window is null");
         glfwMakeContextCurrent(m_Window);
@@ -18,11 +18,11 @@ namespace TE::APIs::OpenGL
         if(status == NULL)
         {
             TE_CORE_CRITICAL("GL_Context::MakeContextCurrent: Failed to initialize GLAD");
-            return false;
+            return TE_FALSE;
         }
 
         TE_CORE_INFO("GL_Context::MakeContextCurrent: Created");
-        return true;
+        return TE_TRUE;
     }
 
     void GL_Context::SwapBuffers()

@@ -3,7 +3,7 @@
 
 namespace TE::APIs::OpenGL
 {
-    GL_Shader::GL_Shader(const String & name, const Path& vtxShader, const Path& fragShader)
+    GL_Shader::GL_Shader(const String& name, const Path& vtxShader, const Path& fragShader)
     {
         std::unordered_map<GLenum, String> shaderSources
         {
@@ -56,52 +56,52 @@ namespace TE::APIs::OpenGL
         return -1;
     }
 
-    void GL_Shader::SetUnifrom(const String & uniformName, float value)
+    void GL_Shader::SetUnifrom(const String& uniformName, Float value)
     {
         glUniform1f(GetUniformLocation(uniformName), value);
     }
 
-    void GL_Shader::SetUniform(const String & uniformName, Int32 value)
+    void GL_Shader::SetUniform(const String& uniformName, Int32 value)
     {
         glUniform1i(GetUniformLocation(uniformName), value);
     }
 
-    void GL_Shader::SetUniform(const String & uniformName, UInt32 value)
+    void GL_Shader::SetUniform(const String& uniformName, UInt32 value)
     {
         glUniform1i(GetUniformLocation(uniformName), value);
     }
 
-    void GL_Shader::SetUniform(const String & uniformName, const Vec2 & value)
+    void GL_Shader::SetUniform(const String& uniformName, const Vec2& value)
     {
         glUniform2fv(GetUniformLocation(uniformName), 1, glm::value_ptr(value));
     }
 
-    void GL_Shader::SetUniform(const String & uniformName, const Vec3 & value)
+    void GL_Shader::SetUniform(const String& uniformName, const Vec3& value)
     {
         glUniform3fv(GetUniformLocation(uniformName), 1, glm::value_ptr(value));
     }
 
-    void GL_Shader::SetUniform(const String & uniformName, const Vec4 & value)
+    void GL_Shader::SetUniform(const String& uniformName, const Vec4& value)
     {
         glUniform4fv(GetUniformLocation(uniformName), 1, glm::value_ptr(value));
     }
 
-    void GL_Shader::SetUniform(const String & uniformName, const Mat2 & value)
+    void GL_Shader::SetUniform(const String& uniformName, const Mat2& value)
     {
         glUniformMatrix2fv(GetUniformLocation(uniformName), 1, GL_FALSE, glm::value_ptr(value));
     }
 
-    void GL_Shader::SetUniform(const String & uniformName, const Mat3 & value)
+    void GL_Shader::SetUniform(const String& uniformName, const Mat3& value)
     {
         glUniformMatrix3fv(GetUniformLocation(uniformName), 1, GL_FALSE, glm::value_ptr(value));
     }
 
-    void GL_Shader::SetUniform(const String & uniformName, const Mat4 & value)
+    void GL_Shader::SetUniform(const String& uniformName, const Mat4& value)
     {
         glUniformMatrix4fv(GetUniformLocation(uniformName), 1, GL_FALSE, glm::value_ptr(value));
     }
 
-    void GL_Shader::CompileShaders(std::unordered_map<GLenum,String>& shaders)
+    void GL_Shader::CompileShaders(std::unordered_map<GLenum, String>& shaders)
     {
         ShaderProgramID programID = glCreateProgram();
         if(!programID)
@@ -126,7 +126,7 @@ namespace TE::APIs::OpenGL
         m_programID = programID;
     }
 
-    String GL_Shader::ReadShaderFiles(const Path & filePath)
+    String GL_Shader::ReadShaderFiles(const Path& filePath)
     {
         String result{};
         InputFile in_file(filePath, std::ios::in | std::ios::binary);
