@@ -85,7 +85,7 @@ namespace TE::APIs::OpenGL
     }
 
 
-    GL_SubTexture2D::GL_SubTexture2D(const Ref<TE::Renderer::ITexture2D>& texture, const Vec2& min, const Vec2& max)
+    GL_SubTexture2D::GL_SubTexture2D(const Ref<TE::Renderer::Texture2D>& texture, const Vec2& min, const Vec2& max)
     {
         m_Texture = texture;
         m_TexCoords[0] = { min.x, min.y };

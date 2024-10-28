@@ -4,7 +4,7 @@
 
 namespace TE::Renderer
 {
-    Ref<IVertexBuffer> CreateVertexBuffer(UInt32 allocatorSize)
+    Ref<VertexBuffer> CreateVertexBuffer(UInt32 allocatorSize)
     {
         switch(Renderer::GetAPI())
         {
@@ -16,7 +16,7 @@ namespace TE::Renderer
         }
     }
 
-    Ref<IVertexBuffer> CreateVertexBuffer(VertexBufferData data, UInt32 size)
+    Ref<VertexBuffer> CreateVertexBuffer(VertexBufferData data, UInt32 size)
     {
         switch(Renderer::GetAPI())
         {
@@ -28,7 +28,7 @@ namespace TE::Renderer
         }
     }
 
-    Ref<IIndexBuffer> CreateIndexBuffer(IndexBufferData data, UInt32 count)
+    Ref<IndexBuffer> CreateIndexBuffer(IndexBufferData data, UInt32 count)
     {
         switch(Renderer::GetAPI())
         {

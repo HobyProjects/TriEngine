@@ -7,7 +7,7 @@
 
 namespace TE::APIs::OpenGL
 {
-    class GL_FrameBuffer : public TE::Renderer::IFrameBuffer
+    class GL_FrameBuffer : public TE::Renderer::FrameBuffer
     {
         public:
             GL_FrameBuffer() = default;

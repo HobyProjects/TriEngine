@@ -81,11 +81,11 @@ namespace TE::Renderer
             UInt32 m_Stride{TE_NULL};
     };
 
-    class IVertexBuffer
+    class VertexBuffer
     {
         public:
-            IVertexBuffer() = default;
-            ~IVertexBuffer() = default;
+            VertexBuffer() = default;
+            ~VertexBuffer() = default;
 
             virtual void Bind() const = TE_NULL;
             virtual void Unbind() const = TE_NULL;
@@ -96,11 +96,11 @@ namespace TE::Renderer
             virtual const BufferLayout& GetLayout() const = TE_NULL;
     };
 
-    class IIndexBuffer
+    class IndexBuffer
     {
         public:
-            IIndexBuffer() = default;
-            ~IIndexBuffer() = default;
+            IndexBuffer() = default;
+            ~IndexBuffer() = default;
 
             virtual void Bind() const = TE_NULL;
             virtual void Unbind() const = TE_NULL;
@@ -108,8 +108,8 @@ namespace TE::Renderer
             virtual UInt32 GetCount() const = TE_NULL;
     };
 
-    Ref<IVertexBuffer> CreateVertexBuffer(UInt32 allocatorSize);
-    Ref<IVertexBuffer> CreateVertexBuffer(VertexBufferData data, UInt32 size);
-    Ref<IIndexBuffer> CreateIndexBuffer(IndexBufferData data, UInt32 count);
+    Ref<VertexBuffer> CreateVertexBuffer(UInt32 allocatorSize);
+    Ref<VertexBuffer> CreateVertexBuffer(VertexBufferData data, UInt32 size);
+    Ref<IndexBuffer> CreateIndexBuffer(IndexBufferData data, UInt32 count);
 
 }

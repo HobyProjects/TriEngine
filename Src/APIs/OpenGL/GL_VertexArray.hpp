@@ -5,7 +5,7 @@
 
 namespace TE::APIs::OpenGL
 {
-    class GL_VertexArray : public TE::Renderer::IVertexArray
+    class GL_VertexArray : public TE::Renderer::VertexArray
     {
         public:
             GL_VertexArray();
@@ -14,14 +14,14 @@ namespace TE::APIs::OpenGL
             virtual void Bind() const override;
             virtual void Unbind() const override;
             virtual VertexArrayID GetID() const override;
-            virtual void EmplaceVtxBuffer(const Ref<TE::Renderer::IVertexBuffer>& vtxBuffer) override;
-            virtual void EmplaceIdxBuffer(const Ref<TE::Renderer::IIndexBuffer>& idxBuffer) override;
-            virtual const std::vector<Ref<TE::Renderer::IVertexBuffer>>& GetVtxBuffers() const override;
-            virtual const Ref<TE::Renderer::IIndexBuffer>& GetIdexBuffer() const override;
+            virtual void EmplaceVtxBuffer(const Ref<TE::Renderer::VertexBuffer>& vtxBuffer) override;
+            virtual void EmplaceIdxBuffer(const Ref<TE::Renderer::IndexBuffer>& idxBuffer) override;
+            virtual const std::vector<Ref<TE::Renderer::VertexBuffer>>& GetVtxBuffers() const override;
+            virtual const Ref<TE::Renderer::IndexBuffer>& GetIdexBuffer() const override;
 
         private:
             VertexArrayID m_VertexArrayID = 0;
-            std::vector<Ref<TE::Renderer::IVertexBuffer>> m_VtxBuffers;
-            Ref<TE::Renderer::IIndexBuffer> m_IdexBuffer;
+            std::vector<Ref<TE::Renderer::VertexBuffer>> m_VtxBuffers;
+            Ref<TE::Renderer::IndexBuffer> m_IdexBuffer;
     };
 }

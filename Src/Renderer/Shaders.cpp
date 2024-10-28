@@ -4,7 +4,7 @@
 
 namespace TE::Renderer
 {
-    Ref<IShader> CreateShader(const String& name, const Path& vtxShader, const Path& fragShader)
+    Ref<Shader> CreateShader(const String& name, const Path& vtxShader, const Path& fragShader)
     {
         switch(Renderer::GetAPI())
         {

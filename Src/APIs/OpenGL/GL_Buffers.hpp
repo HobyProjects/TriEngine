@@ -7,7 +7,7 @@
 
 namespace TE::APIs::OpenGL
 {
-    class GL_VertexBuffer : public TE::Renderer::IVertexBuffer
+    class GL_VertexBuffer : public TE::Renderer::VertexBuffer
     {
         public:
             GL_VertexBuffer() = default;
@@ -27,7 +27,7 @@ namespace TE::APIs::OpenGL
             TE::Renderer::BufferLayout m_Layout;
     };
 
-    class GL_IndexBuffer : public TE::Renderer::IIndexBuffer
+    class GL_IndexBuffer : public TE::Renderer::IndexBuffer
     {
         public:
             GL_IndexBuffer() = default;

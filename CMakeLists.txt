@@ -86,6 +86,7 @@ set(
 
         # Renderer
         ${TE_SRC_DIR}/Renderer/Renderer.hpp
+        ${TE_SRC_DIR}/Renderer/BatchRenderer2D.hpp
         ${TE_SRC_DIR}/Renderer/Buffers.hpp
         ${TE_SRC_DIR}/Renderer/Context.hpp
         ${TE_SRC_DIR}/Renderer/Shaders.hpp
@@ -133,6 +134,7 @@ set(
 
         # Renderer
         ${TE_SRC_DIR}/Renderer/Renderer.cpp
+        ${TE_SRC_DIR}/Renderer/BatchRenderer2D.cpp
         ${TE_SRC_DIR}/Renderer/Buffers.cpp
         ${TE_SRC_DIR}/Renderer/Context.cpp
         ${TE_SRC_DIR}/Renderer/Shaders.cpp

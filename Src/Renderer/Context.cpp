@@ -5,7 +5,7 @@
 
 namespace TE::Renderer
 {
-    Ref<IContext> CreateContext(NativeWindow window)
+    Ref<Context> CreateContext(NativeWindow window)
     {
         switch(Renderer::GetAPI())
         {

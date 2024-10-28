@@ -4,7 +4,7 @@
 
 namespace TE::Renderer
 {
-    Ref<IVertexArray> TE::Renderer::CreateVertexArray()
+    Ref<VertexArray> TE::Renderer::CreateVertexArray()
     {
         switch(Renderer::GetAPI())
         {

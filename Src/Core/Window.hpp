@@ -71,7 +71,7 @@ namespace TE::Core
 
             virtual NativeWindow GetNativeWindow() = TE_NULL;
             virtual WindowSpecification& GetWindowSpecification() = TE_NULL;
-            virtual Ref<TE::Renderer::IContext> GetContext() = TE_NULL;
+            virtual Ref<TE::Renderer::Context> GetContext() = TE_NULL;
             virtual void SwapBuffers() = TE_NULL;
     };
 

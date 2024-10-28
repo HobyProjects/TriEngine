@@ -12,11 +12,11 @@ namespace TE::Renderer
         Boolean SwapChainTarget{TE_FALSE};
     };
 
-    class IFrameBuffer
+    class FrameBuffer
     {
         public:
-            IFrameBuffer() = default;
-            virtual ~IFrameBuffer() = default;
+            FrameBuffer() = default;
+            virtual ~FrameBuffer() = default;
 
             virtual void Bind() const = TE_NULL;
             virtual void Unbind() const = TE_NULL;
@@ -29,5 +29,5 @@ namespace TE::Renderer
             virtual void CreateFrame() = TE_NULL;
     };
 
-    Ref<IFrameBuffer> CreateFrameBuffer(const FrameBufferSpecifications& specification);
+    Ref<FrameBuffer> CreateFrameBuffer(const FrameBufferSpecifications& specification);
 }

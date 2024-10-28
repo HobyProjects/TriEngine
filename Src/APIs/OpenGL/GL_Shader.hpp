@@ -7,7 +7,7 @@
 
 namespace TE::APIs::OpenGL
 {
-    class GL_Shader : public TE::Renderer::IShader
+    class GL_Shader : public TE::Renderer::Shader
     {
         public:
             GL_Shader() = default;

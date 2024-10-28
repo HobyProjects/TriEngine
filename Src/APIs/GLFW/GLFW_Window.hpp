@@ -30,12 +30,12 @@ namespace TE::APIs::GLFW
 
             virtual NativeWindow GetNativeWindow() override { return (NativeWindow)m_NativeWindow; }
             virtual TE::Core::WindowSpecification& GetWindowSpecification() override { return m_Specification; }
-            virtual Ref<TE::Renderer::IContext> GetContext() override { return m_Context; }
+            virtual Ref<TE::Renderer::Context> GetContext() override { return m_Context; }
             virtual void SwapBuffers() override;
 
         private:
             GLFWwindow* m_NativeWindow{nullptr};
             TE::Core::WindowSpecification m_Specification{};
-            Ref<TE::Renderer::IContext> m_Context{nullptr};
+            Ref<TE::Renderer::Context> m_Context{nullptr};
     };
 }

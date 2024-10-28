@@ -5,7 +5,7 @@
 
 namespace TE::Renderer
 {
-    Ref<ITexture2D> CreateTexture2D(Int32 width, Int32 height)
+    Ref<Texture2D> CreateTexture2D(Int32 width, Int32 height)
     {
         switch(Renderer::GetAPI())
         {
@@ -17,7 +17,7 @@ namespace TE::Renderer
         };
     }
 
-    Ref<ITexture2D> CreateTexture2D(const Path& path, Boolean flip)
+    Ref<Texture2D> CreateTexture2D(const Path& path, Boolean flip)
     {
         switch(Renderer::GetAPI())
         {
@@ -29,7 +29,7 @@ namespace TE::Renderer
         };
     }
 
-   Ref<ISubTexture2D> CreateSubTexture2D(const Ref<ITexture2D>& texture, const Vec2& coords, const Vec2 & cellSize, const Vec2& spriteSize)
+   Ref<SubTexture2D> CreateSubTexture2D(const Ref<Texture2D>& texture, const Vec2& coords, const Vec2 & cellSize, const Vec2& spriteSize)
     {
         switch(Renderer::GetAPI())
         {

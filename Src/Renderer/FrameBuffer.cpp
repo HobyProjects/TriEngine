@@ -4,7 +4,7 @@
 
 namespace TE::Renderer
 {
-    Ref<IFrameBuffer> TE::Renderer::CreateFrameBuffer(const FrameBufferSpecifications & specification)
+    Ref<FrameBuffer> TE::Renderer::CreateFrameBuffer(const FrameBufferSpecifications & specification)
     {
         switch(Renderer::GetAPI())
         {

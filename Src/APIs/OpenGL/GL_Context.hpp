@@ -9,7 +9,7 @@
 
 namespace TE::APIs::OpenGL
 {
-    class GL_Context : public TE::Renderer::IContext
+    class GL_Context : public TE::Renderer::Context
     {
         public:
             GL_Context() = default;

@@ -6,20 +6,20 @@
 
 namespace TE::Renderer
 {
-    class IVertexArray
+    class VertexArray
     {
         public:
-            IVertexArray() = default;
-            virtual ~IVertexArray() = default;
+            VertexArray() = default;
+            virtual ~VertexArray() = default;
 
             virtual void Bind() const = TE_NULL;
             virtual void Unbind() const = TE_NULL;
             virtual VertexArrayID GetID() const = TE_NULL;
-            virtual void EmplaceVtxBuffer(const Ref<IVertexBuffer>& vtxBuffer) = TE_NULL;
-            virtual void EmplaceIdxBuffer(const Ref<IIndexBuffer>& idxBuffer) = TE_NULL;
-            virtual const std::vector<Ref<IVertexBuffer>>& GetVtxBuffers() const = TE_NULL;
-            virtual const Ref<IIndexBuffer>& GetIdexBuffer() const = TE_NULL;
+            virtual void EmplaceVtxBuffer(const Ref<VertexBuffer>& vtxBuffer) = TE_NULL;
+            virtual void EmplaceIdxBuffer(const Ref<IndexBuffer>& idxBuffer) = TE_NULL;
+            virtual const std::vector<Ref<VertexBuffer>>& GetVtxBuffers() const = TE_NULL;
+            virtual const Ref<IndexBuffer>& GetIdexBuffer() const = TE_NULL;
     };
     
-    Ref<IVertexArray> CreateVertexArray();
+    Ref<VertexArray> CreateVertexArray();
 }

@@ -5,7 +5,7 @@
 
 namespace TE::APIs::OpenGL
 {
-    class GL_Texture2D : public TE::Renderer::ITexture2D
+    class GL_Texture2D : public TE::Renderer::Texture2D
     {
         public:
             GL_Texture2D(UInt32 width, UInt32 height);
@@ -34,13 +34,13 @@ namespace TE::APIs::OpenGL
             UInt32 m_DataFormat{TE_NULL};         
     };
 
-    class GL_SubTexture2D : public TE::Renderer::ISubTexture2D
+    class GL_SubTexture2D : public TE::Renderer::SubTexture2D
     {
         public:
-            GL_SubTexture2D(const Ref<TE::Renderer::ITexture2D>& texture, const Vec2& min, const Vec2& max);
+            GL_SubTexture2D(const Ref<TE::Renderer::Texture2D>& texture, const Vec2& min, const Vec2& max);
             ~GL_SubTexture2D() = default;
 
-            virtual const Ref<TE::Renderer::ITexture2D>& GetTexturePtr() const override
+            virtual const Ref<TE::Renderer::Texture2D>& GetTexturePtr() const override
             {
                 return m_Texture;
             }
@@ -62,7 +62,7 @@ namespace TE::APIs::OpenGL
 
         private:
             static const UInt32 NUMBER_OF_TEXTURE_COORDS = 4;
-            std::shared_ptr<TE::Renderer::ITexture2D> m_Texture;
+            std::shared_ptr<TE::Renderer::Texture2D> m_Texture;
             Vec2 m_TexCoords[NUMBER_OF_TEXTURE_COORDS];
             UInt32 m_InternalFormat{TE_NULL};
             UInt32 m_DataFormat{TE_NULL};

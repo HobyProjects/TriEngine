@@ -45,7 +45,7 @@ namespace TE::APIs::OpenGL
         return -1;
     }
 
-    void GL_VertexArray::EmplaceVtxBuffer(const Ref<TE::Renderer::IVertexBuffer>& vtxBuffer)
+    void GL_VertexArray::EmplaceVtxBuffer(const Ref<TE::Renderer::VertexBuffer>& vtxBuffer)
     {
         glBindVertexArray(m_VertexArrayID);
         vtxBuffer->Bind();
@@ -68,19 +68,19 @@ namespace TE::APIs::OpenGL
 
         m_VtxBuffers.emplace_back(vtxBuffer);
     }
-    void GL_VertexArray::EmplaceIdxBuffer(const Ref<TE::Renderer::IIndexBuffer>& idxBuffer)
+    void GL_VertexArray::EmplaceIdxBuffer(const Ref<TE::Renderer::IndexBuffer>& idxBuffer)
     {
         glBindVertexArray(m_VertexArrayID);
         m_IdexBuffer = idxBuffer;
         m_IdexBuffer->Bind();
     }
 
-    const std::vector<Ref<TE::Renderer::IVertexBuffer>>& GL_VertexArray::GetVtxBuffers() const
+    const std::vector<Ref<TE::Renderer::VertexBuffer>>& GL_VertexArray::GetVtxBuffers() const
     {
         return m_VtxBuffers;
     }
     
-    const Ref<TE::Renderer::IIndexBuffer>& GL_VertexArray::GetIdexBuffer() const
+    const Ref<TE::Renderer::IndexBuffer>& GL_VertexArray::GetIdexBuffer() const
     {
         return m_IdexBuffer;
     }
