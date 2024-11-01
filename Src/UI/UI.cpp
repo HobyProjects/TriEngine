@@ -3,8 +3,8 @@
 
 namespace TE::UI
 {
-    UILayer::UILayer(Ref<TE::Core::IWindow> window, TE::Core::ServiceAPI windowApi, UITheme theme)
-        : TE::Core::Layer("UILayer"), m_Window(window), m_Theme(theme), m_WindowApi(windowApi)
+    UILayer::UILayer(Ref<TE::Core::Window> window, UITheme theme)
+        : TE::Core::Layer("UILayer"), m_Window(window), m_Theme(theme)
     {
     }
 
@@ -16,66 +16,212 @@ namespace TE::UI
         io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;       
         io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;         
         io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable; 
-
         TRIMANA_ASSERT(m_Window != nullptr, "Window is null");
         (m_Theme == UITheme::Dark) ? SetDarkTheme() : SetLightTheme();
 
-        UInt32 UI_init = (UInt32)(TE::Renderer::Renderer::GetAPI()) | (UInt32)(m_WindowApi);
-
-        if(UI_init == (UInt32)TE::Renderer::RendererAPI::None | (UInt32)TE::Core::ServiceAPI::API_None)
+        if(TE::Core::GetPlatformServiceAPI()->GetAPI() == TE::Core::ServiceAPIs::API_GLFW)
         {
-            TRIMANA_ASSERT(false, "No rendering API selected");
+            switch(TE::Renderer::Renderer::GetAPI())
+            {
+                case TE::Renderer::RendererAPI::None:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "No rendering API selected");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::OpenGL:
+                {
+                    TE_CORE_INFO("Initializing ImGui for OpenGL with GLFW");
+                    ImGui_ImplGlfw_InitForOpenGL((GLFWwindow*)m_Window->GetNativeWindow(), TE_TRUE);
+                    ImGui_ImplOpenGL3_Init("#version 430");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::Vulkan:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::DirectX:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
+
             return;
         }
 
-        if(UI_init == (UInt32)TE::Renderer::RendererAPI::OpenGL | (UInt32)TE::Core::ServiceAPI::API_GLFW)
+        if(TE::Core::GetPlatformServiceAPI()->GetAPI() == TE::Core::ServiceAPIs::API_SDL)
         {
-            TE_CORE_INFO("Initializing ImGui for OpenGL");
-            ImGui_ImplGlfw_InitForOpenGL((GLFWwindow*)m_Window->GetNativeWindow(), true);
-            ImGui_ImplOpenGL3_Init("#version 430");
-        }
+            switch(TE::Renderer::Renderer::GetAPI())
+            {
+                case TE::Renderer::RendererAPI::None:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "No rendering API selected");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::OpenGL:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::Vulkan:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::DirectX:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
 
-        if(UI_init == (UInt32)TE::Renderer::RendererAPI::Vulkan | (UInt32)TE::Core::ServiceAPI::API_GLFW)
-        {
-            TRIMANA_ASSERT(false, "Not implemented yet");
             return;
         }
 
-        if(UI_init == (UInt32)TE::Renderer::RendererAPI::DirectX | (UInt32)TE::Core::ServiceAPI::API_GLFW)
+        if(TE::Core::GetPlatformServiceAPI()->GetAPI() == TE::Core::ServiceAPIs::API_WIN32)
         {
-            TRIMANA_ASSERT(false, "Not implemented yet");
+            switch(TE::Renderer::Renderer::GetAPI())
+            {
+                case TE::Renderer::RendererAPI::None:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "No rendering API selected");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::OpenGL:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::Vulkan:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::DirectX:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
+
             return;
         }
-
     }
 
     void UILayer::OnDetach()
     {
-        UInt32 UI = (UInt32)(TE::Renderer::Renderer::GetAPI()) | (UInt32)(m_WindowApi);
-
-        if(UI == (UInt32)TE::Renderer::RendererAPI::None | (UInt32)TE::Core::ServiceAPI::API_None)
+        if(TE::Core::GetPlatformServiceAPI()->GetAPI() == TE::Core::ServiceAPIs::API_GLFW)
         {
-            TRIMANA_ASSERT(false, "No rendering API selected");
+            switch(TE::Renderer::Renderer::GetAPI())
+            {
+                case TE::Renderer::RendererAPI::None:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "No rendering API selected");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::OpenGL:
+                {
+                    TE_CORE_INFO("Shutting down ImGui for OpenGL");
+                    ImGui_ImplOpenGL3_Shutdown();
+                    ImGui_ImplGlfw_Shutdown();
+                    ImGui::DestroyContext();;
+                    break;
+                }
+                case TE::Renderer::RendererAPI::Vulkan:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::DirectX:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
+
             return;
         }
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::OpenGL | (UInt32)TE::Core::ServiceAPI::API_GLFW)
+        if(TE::Core::GetPlatformServiceAPI()->GetAPI() == TE::Core::ServiceAPIs::API_SDL)
         {
-            TE_CORE_INFO("Shutting down ImGui for OpenGL");
-            ImGui_ImplOpenGL3_Shutdown();
-            ImGui_ImplGlfw_Shutdown();
-            ImGui::DestroyContext();
-        }
+            switch(TE::Renderer::Renderer::GetAPI())
+            {
+                case TE::Renderer::RendererAPI::None:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "No rendering API selected");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::OpenGL:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::Vulkan:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::DirectX:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::Vulkan | (UInt32)TE::Core::ServiceAPI::API_GLFW)
-        {
-            TRIMANA_ASSERT(false, "Not implemented yet");
             return;
         }
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::DirectX | (UInt32)TE::Core::ServiceAPI::API_GLFW)
+        if(TE::Core::GetPlatformServiceAPI()->GetAPI() == TE::Core::ServiceAPIs::API_WIN32)
         {
-            TRIMANA_ASSERT(false, "Not implemented yet");
+            switch(TE::Renderer::Renderer::GetAPI())
+            {
+                case TE::Renderer::RendererAPI::None:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "No rendering API selected");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::OpenGL:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::Vulkan:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::DirectX:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
+
             return;
         }
     }
@@ -92,71 +238,218 @@ namespace TE::UI
 
     void UILayer::Begin()
     {
-        UInt32 UI = (UInt32)(TE::Renderer::Renderer::GetAPI()) | (UInt32)(m_WindowApi);
-
-        if(UI == (UInt32)TE::Renderer::RendererAPI::None | (UInt32)TE::Core::ServiceAPI::API_None)
+        if(TE::Core::GetPlatformServiceAPI()->GetAPI() == TE::Core::ServiceAPIs::API_GLFW)
         {
-            TRIMANA_ASSERT(false, "No rendering API selected");
+            switch(TE::Renderer::Renderer::GetAPI())
+            {
+                case TE::Renderer::RendererAPI::None:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "No rendering API selected");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::OpenGL:
+                {
+                    ImGui_ImplOpenGL3_NewFrame();
+                    ImGui_ImplGlfw_NewFrame();
+                    ImGui::NewFrame();
+                    break;
+                }
+                case TE::Renderer::RendererAPI::Vulkan:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::DirectX:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
+
             return;
         }
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::OpenGL | (UInt32)TE::Core::ServiceAPI::API_GLFW)
+        if(TE::Core::GetPlatformServiceAPI()->GetAPI() == TE::Core::ServiceAPIs::API_SDL)
         {
-            ImGui_ImplOpenGL3_NewFrame();
-            ImGui_ImplGlfw_NewFrame();
-            ImGui::NewFrame();
-        }
+            switch(TE::Renderer::Renderer::GetAPI())
+            {
+                case TE::Renderer::RendererAPI::None:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "No rendering API selected");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::OpenGL:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::Vulkan:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::DirectX:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::Vulkan | (UInt32)TE::Core::ServiceAPI::API_GLFW)
-        {
-            TRIMANA_ASSERT(false, "Not implemented yet");
             return;
         }
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::DirectX | (UInt32)TE::Core::ServiceAPI::API_GLFW)
+        if(TE::Core::GetPlatformServiceAPI()->GetAPI() == TE::Core::ServiceAPIs::API_WIN32)
         {
-            TRIMANA_ASSERT(false, "Not implemented yet");
+            switch(TE::Renderer::Renderer::GetAPI())
+            {
+                case TE::Renderer::RendererAPI::None:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "No rendering API selected");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::OpenGL:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::Vulkan:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::DirectX:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
+
             return;
         }
-
     }
 
     void UILayer::End()
     {
         ImGuiIO &io = ImGui::GetIO();
         io.DisplaySize = ImVec2(static_cast<float>(m_Window->GetWindowSpecification().Width), static_cast<float>(m_Window->GetWindowSpecification().Height));
-
         ImGui::EndFrame();
         ImGui::Render();
-        UInt32 UI = (UInt32)(TE::Renderer::Renderer::GetAPI()) | (UInt32)(m_WindowApi);
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::None | (UInt32)TE::Core::ServiceAPI::API_None)
+        if(TE::Core::GetPlatformServiceAPI()->GetAPI() == TE::Core::ServiceAPIs::API_GLFW)
         {
-            TRIMANA_ASSERT(false, "No rendering API selected");
-            return;
-        }
-
-        if(UI == (UInt32)TE::Renderer::RendererAPI::OpenGL | (UInt32)TE::Core::ServiceAPI::API_GLFW)
-        {
-            ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-            if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+            switch(TE::Renderer::Renderer::GetAPI())
             {
-                GLFWwindow *backup_current_context = glfwGetCurrentContext();
-                ImGui::UpdatePlatformWindows();
-                ImGui::RenderPlatformWindowsDefault();
-                glfwMakeContextCurrent(backup_current_context);
-            } 
-        }
+                case TE::Renderer::RendererAPI::None:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "No rendering API selected");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::OpenGL:
+                {
+                    ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+                    if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+                    {
+                        GLFWwindow *backup_current_context = glfwGetCurrentContext();
+                        ImGui::UpdatePlatformWindows();
+                        ImGui::RenderPlatformWindowsDefault();
+                        glfwMakeContextCurrent(backup_current_context);
+                    } 
+                    break;
+                }
+                case TE::Renderer::RendererAPI::Vulkan:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::DirectX:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::Vulkan | (UInt32)TE::Core::ServiceAPI::API_GLFW)
-        {
-            TRIMANA_ASSERT(false, "Not implemented yet");
             return;
         }
 
-        if(UI == (UInt32)TE::Renderer::RendererAPI::DirectX | (UInt32)TE::Core::ServiceAPI::API_GLFW)
+        if(TE::Core::GetPlatformServiceAPI()->GetAPI() == TE::Core::ServiceAPIs::API_SDL)
         {
-            TRIMANA_ASSERT(false, "Not implemented yet");
+            switch(TE::Renderer::Renderer::GetAPI())
+            {
+                case TE::Renderer::RendererAPI::None:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "No rendering API selected");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::OpenGL:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::Vulkan:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::DirectX:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
+
+            return;
+        }
+
+        if(TE::Core::GetPlatformServiceAPI()->GetAPI() == TE::Core::ServiceAPIs::API_WIN32)
+        {
+            switch(TE::Renderer::Renderer::GetAPI())
+            {
+                case TE::Renderer::RendererAPI::None:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "No rendering API selected");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::OpenGL:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::Vulkan:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                case TE::Renderer::RendererAPI::DirectX:
+                {
+                    TRIMANA_ASSERT(TE_FALSE, "Not implemented yet");
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
+            }
+
             return;
         }
     }
@@ -196,12 +489,12 @@ namespace TE::UI
 		colors[ImGuiCol_TabHovered] = ImVec4{ 0.38f, 0.3805f, 0.381f, 1.0f };
 		colors[ImGuiCol_TabActive] = ImVec4{ 0.28f, 0.2805f, 0.281f, 1.0f };
 		colors[ImGuiCol_TabUnfocused] = ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
-		colors[ImGuiCol_TabUnfocusedActive] = ImVec4{ 0.2f, 0.205f, 0.21f, 1.0f };
+		colors[ImGuiCol_TabUnfocusedActive]     = ImVec4{ 0.2f, 0.205f, 0.21f, 1.0f };
 
 		// Title
-		colors[ImGuiCol_TitleBg] = ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
-		colors[ImGuiCol_TitleBgActive] = ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
-		colors[ImGuiCol_TitleBgCollapsed] = ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
+		colors[ImGuiCol_TitleBg]            = ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
+		colors[ImGuiCol_TitleBgActive]      = ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
+		colors[ImGuiCol_TitleBgCollapsed]   = ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
     }
 
     void UILayer::SetLightTheme()

@@ -13,6 +13,6 @@ namespace TE::APIs::GLFW
             GLFWAPI_EventReceiver() = default;
             virtual ~GLFWAPI_EventReceiver() = default;
             void PollEvents() override;
-            virtual void SetCallbackWindow(const Ref<TE::Core::IWindow>& window, const TE::Events::EventCallback& eventsCallback) override;
+            virtual void SetCallbackWindow(const Ref<TE::Core::Window>& window, const TE::Events::EventCallback& eventsCallback) override;
     };
 }

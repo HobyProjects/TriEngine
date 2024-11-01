@@ -2,9 +2,9 @@
 
 namespace TE::APIs::GLFW
 {
-    static Ref<TE::Core::IWindow> s_TargetWindow = nullptr;
+    static Ref<TE::Core::Window> s_TargetWindow = nullptr;
 
-    void GLFWAPI_InputHandler::TargetWindow(const Ref<TE::Core::IWindow>& window)
+    void GLFWAPI_InputHandler::TargetWindow(const Ref<TE::Core::Window>& window)
     {
         s_TargetWindow = window;
     }

@@ -21,7 +21,7 @@ namespace TE::UI
     {
         public:
             UILayer() : TE::Core::Layer("UILayer"){}
-            UILayer(Ref<TE::Core::IWindow> window, TE::Core::ServiceAPI windowApi = TE::Core::ServiceAPI::API_GLFW, UITheme theme = UITheme::Dark);
+            UILayer(Ref<TE::Core::Window> window, UITheme theme = UITheme::Dark);
             virtual ~UILayer() = default;
 
             virtual void OnAttach() override;
@@ -38,9 +38,8 @@ namespace TE::UI
             void SetClassicTheme();
 
         private:
-            Ref<TE::Core::IWindow> m_Window{nullptr};
+            Ref<TE::Core::Window> m_Window{nullptr};
             Boolean m_AllowEvents{TE_TRUE};
-            TE::Core::ServiceAPI m_WindowApi{TE::Core::ServiceAPI::API_GLFW};
             UITheme m_Theme{UITheme::Dark};
     };
 }

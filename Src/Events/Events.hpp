@@ -79,7 +79,7 @@ namespace TE::Events
                 if (m_Event.GetEventType() == T::GetStaticType()) 
                 {
                     m_Event.Handled |= function(static_cast<T&>(m_Event));
-                    return TR_TRUE;
+                    return TE_TRUE;
                 }
                 
                 return TE_FALSE;

@@ -3,13 +3,13 @@
 
 namespace TE::Events
 {
-    Ref<TE::Events::IInputHandler> TE::Events::CreateInputHandler(TE::Core::ServiceAPI api)
+    Ref<TE::Events::IInputHandler> TE::Events::CreateInputHandler(TE::Core::ServiceAPIs api)
     {
         switch(api)
         {
-            case TE::Core::ServiceAPI::API_GLFW:     return CreateRef<TE::APIs::GLFW::GLFWAPI_InputHandler>();
-            case TE::Core::ServiceAPI::API_SDL:      TRIMANA_ASSERT(TE_FALSE, "SDL is not supported yet.");
-            case TE::Core::ServiceAPI::API_WIN32:    TRIMANA_ASSERT(TE_FALSE, "None is not supported yet.");
+            case TE::Core::ServiceAPIs::API_GLFW:     return CreateRef<TE::APIs::GLFW::GLFWAPI_InputHandler>();
+            case TE::Core::ServiceAPIs::API_SDL:      TRIMANA_ASSERT(TE_FALSE, "SDL is not supported yet.");
+            case TE::Core::ServiceAPIs::API_WIN32:    TRIMANA_ASSERT(TE_FALSE, "None is not supported yet.");
             default:                                return nullptr;
         };
     }

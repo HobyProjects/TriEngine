@@ -2,7 +2,7 @@
 
 namespace TE::APIs::GLFW
 {
-    static Ref<TE::Core::IWindow> s_Window = nullptr;
+    static Ref<TE::Core::Window> s_Window = nullptr;
     static TE::Events::EventCallback s_EventCallback;
 
     static void SetCallBacks()
@@ -132,7 +132,7 @@ namespace TE::APIs::GLFW
         glfwWaitEvents();
     }
 
-    void GLFWAPI_EventReceiver::SetCallbackWindow(const Ref<TE::Core::IWindow>& window, const TE::Events::EventCallback & eventsCallback)
+    void GLFWAPI_EventReceiver::SetCallbackWindow(const Ref<TE::Core::Window>& window, const TE::Events::EventCallback & eventsCallback)
     {
         s_Window = window;
         s_EventCallback = eventsCallback;

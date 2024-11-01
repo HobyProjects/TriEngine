@@ -14,8 +14,8 @@ namespace TE::Events
             virtual ~IEventsReceiver() = default;
 
             virtual void PollEvents() = TE_NULL;
-            virtual void SetCallbackWindow(const Ref<TE::Core::IWindow>& window, const EventCallback& callBack) = TE_NULL;
+            virtual void SetCallbackWindow(const Ref<TE::Core::Window>& window, const EventCallback& callBack) = TE_NULL;
     };
     
-    Ref<IEventsReceiver> CreateEventsReceiver(TE::Core::ServiceAPI api = TE::Core::ServiceAPI::API_GLFW);
+    Ref<IEventsReceiver> CreateEventsReceiver(TE::Core::ServiceAPIs api = TE::Core::ServiceAPIs::API_GLFW);
 }

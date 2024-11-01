@@ -10,7 +10,7 @@ namespace TE::APIs::GLFW
             GLFWAPI_InputHandler() = default;
             virtual ~GLFWAPI_InputHandler() = default;
 
-            virtual void TargetWindow(const Ref<TE::Core::IWindow>& window) override;
+            virtual void TargetWindow(const Ref<TE::Core::Window>& window) override;
             virtual Boolean IsKeyPressed(TE::Core::KeyCodes keyCode) override;
             virtual Boolean IsMouseButtonPressed(TE::Core::MouseButton mouseButton) override;
             virtual Vec2 GetMousePosition() override;

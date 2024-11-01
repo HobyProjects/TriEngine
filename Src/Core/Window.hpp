@@ -44,7 +44,7 @@ namespace TE::Core
         String Title{String()};                    
     };
 
-    enum class ServiceAPI
+    enum class ServiceAPIs
     {
         API_None        = TE_BIT(0),
         API_GLFW        = TE_BIT(1),
@@ -52,22 +52,22 @@ namespace TE::Core
         API_WIN32       = TE_BIT(3),
     };
 
-    class IServiceAPI
+    class ServiceAPI
     {
         public:
-            IServiceAPI() = default;
-            virtual ~IServiceAPI() = default;
+            ServiceAPI() = default;
+            virtual ~ServiceAPI() = default;
 
             virtual Boolean Init() = TE_NULL;
             virtual void Shutdown() = TE_NULL;
-            virtual ServiceAPI GetAPI() = TE_NULL;
+            virtual ServiceAPIs GetAPI() = TE_NULL;
     };
 
-    class IWindow
+    class Window
     {
         public:
-            IWindow() = default;
-            ~IWindow() = default;
+            Window() = default;
+            ~Window() = default;
 
             virtual NativeWindow GetNativeWindow() = TE_NULL;
             virtual WindowSpecification& GetWindowSpecification() = TE_NULL;
@@ -75,5 +75,6 @@ namespace TE::Core
             virtual void SwapBuffers() = TE_NULL;
     };
 
-    Ref<IWindow> CreateWindow(const String& title, ServiceAPI api = ServiceAPI::API_GLFW);
+    Ref<ServiceAPI> GetPlatformServiceAPI();
+    Ref<Window> CreateWindow(const String& title, ServiceAPIs api);
 }

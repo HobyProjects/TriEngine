@@ -8,7 +8,7 @@
 
 namespace TE::APIs::GLFW
 {
-    class GLFWServiceAPI : public TE::Core::IServiceAPI
+    class GLFWServiceAPI : public TE::Core::ServiceAPI
     {
         public:
             GLFWServiceAPI() = default;
@@ -16,13 +16,10 @@ namespace TE::APIs::GLFW
 
             virtual Boolean Init() override;
             virtual void Shutdown() override;
-            virtual TE::Core::ServiceAPI GetAPI() override
-            {
-                return TE::Core::ServiceAPI::API_GLFW;
-            }
+            virtual TE::Core::ServiceAPIs GetAPI() override{ return TE::Core::ServiceAPIs::API_GLFW; }
     };
 
-    class GLFWAPI_Window : public TE::Core::IWindow
+    class GLFWAPI_Window : public TE::Core::Window
     {
         public:
             GLFWAPI_Window(const String& title);
