@@ -12,19 +12,19 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/vector_angle.hpp>
 
-typedef int                 Int32;         
-typedef unsigned int        UInt32;        
-typedef unsigned short      UInt16;        
-typedef unsigned char       UInt8;         
-typedef char                Int8;         
-typedef float               Float;         
-typedef double              Float64;       
-typedef std::string         String;        
-typedef const char*         CString;       
-typedef bool                Boolean;      
-typedef std::filesystem::path   Path;           
-typedef std::ifstream           InputFile;      
-typedef void*                   NativeWindow;   
+typedef int                         Int32;         
+typedef unsigned int                UInt32;        
+typedef unsigned short              UInt16;        
+typedef unsigned char               UInt8;         
+typedef char                        Int8;         
+typedef float                       Float;         
+typedef double                      Float64;       
+typedef std::string                 String;        
+typedef const char*                 CString;       
+typedef bool                        Boolean;      
+typedef std::filesystem::path       Path;           
+typedef std::ifstream               InputFile;      
+typedef void*                       NativeWindow;   
 
 template<typename T>
 using Ref = std::shared_ptr<T>;         

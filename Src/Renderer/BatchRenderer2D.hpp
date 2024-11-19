@@ -8,6 +8,9 @@
 #include "Texture2D.hpp"
 #include "Shaders.hpp"
 #include "Camera2D.hpp"
+#include "Renderer.hpp"
+
+#include "OpenGL/OpenGL.hpp"
 
 namespace TE::Renderer
 {
@@ -32,13 +35,10 @@ namespace TE::Renderer
             static void DrawQuad(const Vec2& position, const Vec2& size, const Ref<Texture2D>& texture);
             static void DrawQuad(const Vec2& position, const Vec2& size, const Ref<Texture2D>& texture, Float rotation);
             static void DrawQuad(const Vec2& position, const Vec2& size, const Vec4& color, const Ref<Texture2D>& texture, Float tilingFactor = 1.0f);
-            static void DrawQuad(const Vec2& position, const Vec2& size, const Vec4& color, const Ref<Texture2D>& texture, Float rotation, Float tilingFactor = 1.0f);
-            
-            static void DrawQuad(const Vec2& position, const Vec2& size, const Ref<SubTexture2D>& texture);
-            static void DrawQuad(const Vec2& position, const Vec2& size, const Ref<SubTexture2D>& texture, Float rotation);
+            static void DrawQuad(const Vec2& position, const Vec2& size, const Vec4& color, const Ref<Texture2D>& texture, Float rotation = 1.0f, Float tilingFactor = 1.0f);
             static void DrawQuad(const Vec2& position, const Vec2& size, const glm::vec4& color, const Ref<SubTexture2D>& texture, Float rotation, Float tilingFactor = 1.0f);
 
-            static void DrawQuad(const Mat4& transform, const Vec2& color);
+            static void DrawQuad(const Mat4& transform, const Vec4& color);
             static void DrawQuad(const Mat4& transform, const Ref<Texture2D>& texture, const Vec4& tint = Vec4(1.0f), Float tilingFactor = 1.0f);
             static void DrawQuad(const Mat4& transform, const Ref<SubTexture2D>& texture, const Vec4& tint = Vec4(1.0f), Float tilingFactor = 1.0f);
 

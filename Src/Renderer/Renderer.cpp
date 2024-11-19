@@ -94,7 +94,7 @@ namespace TE::Renderer
         }
     }
 
-    void Renderer::ClearColor(const glm::vec4 & color)
+    void Renderer::ClearColor(const Vec4& color)
     {
         switch(s_RendererAPI)
         {

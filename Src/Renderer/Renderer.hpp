@@ -26,7 +26,7 @@ namespace TE::Renderer
             static RendererAPI GetAPI();
             static void ChangeAPI(RendererAPI api);
             static void Clear();
-            static void ClearColor(const glm::vec4& color);
+            static void ClearColor(const Vec4& color);
             static void SetViewport(UInt32 x, UInt32 y, UInt32 width, UInt32 height);
     };
 }
