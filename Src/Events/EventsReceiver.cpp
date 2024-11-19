@@ -3,7 +3,7 @@
 
 namespace TE::Events
 {
-    Ref<IEventsReceiver> CreateEventsReceiver(TE::Core::ServiceAPIs api)
+    Ref<EventsReceiver> CreateEventsReceiver(TE::Core::ServiceAPIs api)
     {
         switch(api)
         {

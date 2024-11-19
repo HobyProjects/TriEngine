@@ -3,7 +3,7 @@
 
 namespace TE::Events
 {
-    Ref<TE::Events::IInputHandler> TE::Events::CreateInputHandler(TE::Core::ServiceAPIs api)
+    Ref<TE::Events::InputHandler> TE::Events::CreateInputHandler(TE::Core::ServiceAPIs api)
     {
         switch(api)
         {

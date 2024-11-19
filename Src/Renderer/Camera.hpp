@@ -4,22 +4,18 @@
 
 namespace TE::Renderer
 {
-
     enum class CameraType
     {
         Camera_2D = 0,
         Camera_3D = 1
     };
 
-
     struct CameraBounds
     {
-
         Float Left{ 0.0f };
         Float Right{ 0.0f };
         Float Top{ 0.0f };
         Float Bottom{ 0.0f };
-
 
         CameraBounds() = default;
         CameraBounds(Float left, Float right, Float top, Float bottom) : Left(left), Right(right), Top(top), Bottom(bottom) {};

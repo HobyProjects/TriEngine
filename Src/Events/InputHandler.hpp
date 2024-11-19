@@ -5,11 +5,11 @@
 
 namespace TE::Events
 {
-    class IInputHandler
+    class InputHandler
     {
         public:
-            IInputHandler() = default;
-            virtual ~IInputHandler() = default;
+            InputHandler() = default;
+            virtual ~InputHandler() = default;
 
             virtual void TargetWindow(const Ref<TE::Core::Window>& window) = TE_NULL;
             virtual Boolean IsKeyPressed(TE::Core::KeyCodes keyCode) = TE_NULL;
@@ -17,5 +17,5 @@ namespace TE::Events
             virtual Vec2 GetMousePosition() = TE_NULL;
     };
     
-    Ref<TE::Events::IInputHandler> CreateInputHandler(TE::Core::ServiceAPIs api = TE::Core::ServiceAPIs::API_GLFW);
+    Ref<TE::Events::InputHandler> CreateInputHandler(TE::Core::ServiceAPIs api = TE::Core::ServiceAPIs::API_GLFW);
 }

@@ -7,15 +7,15 @@
 
 namespace TE::Events
 {
-    class IEventsReceiver
+    class EventsReceiver
     {
         public:
-            IEventsReceiver() = default;
-            virtual ~IEventsReceiver() = default;
+            EventsReceiver() = default;
+            virtual ~EventsReceiver() = default;
 
             virtual void PollEvents() = TE_NULL;
             virtual void SetCallbackWindow(const Ref<TE::Core::Window>& window, const EventCallback& callBack) = TE_NULL;
     };
     
-    Ref<IEventsReceiver> CreateEventsReceiver(TE::Core::ServiceAPIs api = TE::Core::ServiceAPIs::API_GLFW);
+    Ref<EventsReceiver> CreateEventsReceiver(TE::Core::ServiceAPIs api = TE::Core::ServiceAPIs::API_GLFW);
 }

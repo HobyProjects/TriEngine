@@ -4,7 +4,7 @@
 
 namespace TE::APIs::GLFW
 {
-    class GLFWAPI_InputHandler : public TE::Events::IInputHandler
+    class GLFWAPI_InputHandler : public TE::Events::InputHandler
     {
         public:
             GLFWAPI_InputHandler() = default;

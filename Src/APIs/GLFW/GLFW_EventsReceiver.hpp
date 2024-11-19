@@ -7,7 +7,7 @@
 
 namespace TE::APIs::GLFW
 {
-    class GLFWAPI_EventReceiver : public TE::Events::IEventsReceiver
+    class GLFWAPI_EventReceiver : public TE::Events::EventsReceiver
     {
         public:
             GLFWAPI_EventReceiver() = default;
