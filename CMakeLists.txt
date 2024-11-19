@@ -50,6 +50,9 @@ set(
         ${TE_SRC_DIR}/Core/Layer.hpp
         ${TE_SRC_DIR}/Core/LayerStack.hpp
         ${TE_SRC_DIR}/Core/Instrument.hpp
+
+        # Camera
+        ${TE_SRC_DIR}/Camera/MainCamera.hpp
     
         # EVENTS
         ${TE_SRC_DIR}/Events/Events.hpp
@@ -76,7 +79,6 @@ set(
         ${TE_SRC_DIR}/APIs/OpenGL/GL_VertexArray.hpp
         ${TE_SRC_DIR}/APIs/OpenGL/GL_Texture2D.hpp
         ${TE_SRC_DIR}/APIs/OpenGL/GL_FrameBuffer.hpp
-
 
         # APIS - GLFW
         ${TE_SRC_DIR}/APIs/GLFW/GLFW.hpp
@@ -105,6 +107,9 @@ set(
         ${TE_SRC_DIR}/Core/Window.cpp
         ${TE_SRC_DIR}/Core/LayerStack.cpp
         ${TE_SRC_DIR}/EntryPoint/TrimanaEngine.cpp
+
+        # Camera
+        ${TE_SRC_DIR}/Camera/MainCamera.cpp
 
         # EVENTS
         ${CMAKE_CURRENT_SOURCE_DIR}/Src/Events/EventsReceiver.cpp

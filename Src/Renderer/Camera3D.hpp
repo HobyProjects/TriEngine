@@ -8,7 +8,6 @@ namespace TE::Renderer
     class Camera3D : public Camera
     {
         public:
-            Camera3D() = default;
             Camera3D(Float fov = 45.0f, Float nearClip = 0.01f, Float farClip = 1000.0f);
             virtual ~Camera3D() = default;
 

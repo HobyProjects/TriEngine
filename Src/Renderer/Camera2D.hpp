@@ -8,7 +8,6 @@ namespace TE::Renderer
     class Camera2D : public Camera
     {
         public:
-            Camera2D() = default;
             Camera2D(Float size = 10.0f, Float nearClip = -1.0f, Float farClip = 1.0f);
             virtual ~Camera2D() = default;
 
