@@ -36,12 +36,12 @@ namespace TE::Renderer
         std::array<Ref<Texture2D>, MAX_TEXTURE_SLOTS> TextureSlots;
         UInt32 TextureSlotIndex{ 1 };
 
-        BatchRenderer2D::Status RenderingStatus;
+        Renderer2D::Status RenderingStatus;
         Vec4 QuadVertexPositions[MAX_QUAD_VERTEX_COUNT];
 
     }; static BatchData s_BatchData;
 
-    void BatchRenderer2D::Restart() 
+    void Renderer2D::Restart() 
     {
         End();
         s_BatchData.QuadBufferPtr = s_BatchData.QuadBuffer;
@@ -49,7 +49,7 @@ namespace TE::Renderer
         s_BatchData.TextureSlotIndex = 1;
     }
 
-    void BatchRenderer2D::Init()
+    void Renderer2D::Init()
     {
         s_BatchData.QuadBuffer = new Vertex[MAX_VERTICES];
         s_BatchData.QuadVAO = CreateVertexArray();
@@ -91,7 +91,7 @@ namespace TE::Renderer
                 s_BatchData.TextureSlots[0] = s_BatchData.PlainTexture;
 
                 //TODO: Create a Asset Manager to load shaders
-                s_BatchData.BatchShader = CreateShader("BatchRenderer2D-GL-DefaultShaders", "Assets/Shaders/BatchRenderer2D-Vertex.glsl", "Assets/Shaders/BatchRenderer2D-Fragment.glsl");
+                s_BatchData.BatchShader = CreateShader("Renderer2D-GL-DefaultShaders", "Assets/Shaders/Renderer2D-Vertex.glsl", "Assets/Shaders/Renderer2D-Fragment.glsl");
 
                 s_BatchData.QuadVertexPositions[0] = { -0.5f, -0.5f, 0.0f, 1.0f };
                 s_BatchData.QuadVertexPositions[1] = {  0.5f, -0.5f, 0.0f, 1.0f };
@@ -101,12 +101,12 @@ namespace TE::Renderer
         }
         s_BatchData.QuadVAO->Unbind();
     }
-    void BatchRenderer2D::Shutdown()
+    void Renderer2D::Shutdown()
     {
         delete[] s_BatchData.QuadBuffer;
     }
 
-    void BatchRenderer2D::Begin(const Camera2D& camera, const Mat4& transform)
+    void Renderer2D::Begin(const Camera2D& camera, const Mat4& transform)
     {
         s_BatchData.BatchShader->Bind();
         s_BatchData.BatchShader->SetUniform("u_MVP", camera.GetViewProjection());
@@ -128,7 +128,7 @@ namespace TE::Renderer
         s_BatchData.QuadBufferPtr = s_BatchData.QuadBuffer;
     }
 
-    void BatchRenderer2D::End()
+    void Renderer2D::End()
     {
         UInt32 size = (UInt8*)s_BatchData.QuadBufferPtr - (UInt8*)s_BatchData.QuadBuffer;
         s_BatchData.QuadVBO->Bind();
@@ -136,7 +136,7 @@ namespace TE::Renderer
         Flush();
     }
 
-    void BatchRenderer2D::Flush()
+    void Renderer2D::Flush()
     {
         for(UInt32 i = 0; i < s_BatchData.TextureSlotIndex; i++) 
         {
@@ -159,32 +159,32 @@ namespace TE::Renderer
 		s_BatchData.TextureSlotIndex = 1;
     }
 
-    void BatchRenderer2D::DrawQuad(const Vec2& position, const Vec2& size, const Vec4& color)
+    void Renderer2D::DrawQuad(const Vec2& position, const Vec2& size, const Vec4& color)
     {
         DrawQuad(position, size, color, s_BatchData.PlainTexture, 0.0f, 1.0f);
     }
 
-    void BatchRenderer2D::DrawQuad(const Vec2& position, const Vec2& size, const Vec4& color, Float rotation)
+    void Renderer2D::DrawQuad(const Vec2& position, const Vec2& size, const Vec4& color, Float rotation)
     {
         DrawQuad(position, size, color, s_BatchData.PlainTexture, rotation, 1.0f);
     }
 
-    void BatchRenderer2D::DrawQuad(const Vec2& position, const Vec2& size, const Ref<Texture2D>& texture)
+    void Renderer2D::DrawQuad(const Vec2& position, const Vec2& size, const Ref<Texture2D>& texture)
     {
         DrawQuad(position, size, Vec4(1.0f), texture, 0.0f, 1.0f);
     }
 
-    void BatchRenderer2D::DrawQuad(const Vec2& position, const Vec2& size, const Ref<Texture2D>& texture, Float rotation)
+    void Renderer2D::DrawQuad(const Vec2& position, const Vec2& size, const Ref<Texture2D>& texture, Float rotation)
     {
         DrawQuad(position, size, Vec4(1.0f), texture, rotation, 1.0f);
     }
 
-    void BatchRenderer2D::DrawQuad(const Vec2& position, const Vec2 & size, const Vec4& color, const Ref<Texture2D>& texture, Float tilingFactor)
+    void Renderer2D::DrawQuad(const Vec2& position, const Vec2 & size, const Vec4& color, const Ref<Texture2D>& texture, Float tilingFactor)
     {
         DrawQuad(position, size, color, texture, 0.0f, tilingFactor);
     }
 
-    void BatchRenderer2D::DrawQuad(const Vec2& position, const Vec2& size, const Vec4& color, const Ref<Texture2D>& texture, Float rotation, Float tilingFactor)
+    void Renderer2D::DrawQuad(const Vec2& position, const Vec2& size, const Vec4& color, const Ref<Texture2D>& texture, Float rotation, Float tilingFactor)
     {
         if (s_BatchData.IndexCount >= MAX_INDICES || s_BatchData.TextureSlotIndex >= MAX_TEXTURE_SLOTS) 
         {
@@ -224,7 +224,7 @@ namespace TE::Renderer
 		s_BatchData.RenderingStatus.QuadCount++;
     }
 
-    void BatchRenderer2D::DrawQuad(const Vec2& position, const Vec2& size, const glm::vec4& color, const Ref<SubTexture2D>& texture, Float rotation, Float tilingFactor)
+    void Renderer2D::DrawQuad(const Vec2& position, const Vec2& size, const glm::vec4& color, const Ref<SubTexture2D>& texture, Float rotation, Float tilingFactor)
     {
         if (s_BatchData.IndexCount >= MAX_INDICES || s_BatchData.TextureSlotIndex >= MAX_TEXTURE_SLOTS) 
         {
@@ -265,12 +265,12 @@ namespace TE::Renderer
 		s_BatchData.RenderingStatus.QuadCount++;
     }
 
-    void BatchRenderer2D::DrawQuad(const Mat4& transform, const Vec4& color)
+    void Renderer2D::DrawQuad(const Mat4& transform, const Vec4& color)
     {
         DrawQuad(transform, s_BatchData.PlainTexture, color, 1.0f);
     }
 
-    void BatchRenderer2D::DrawQuad(const Mat4 & transform, const Ref<Texture2D>& texture, const Vec4 & tint, Float tilingFactor)
+    void Renderer2D::DrawQuad(const Mat4 & transform, const Ref<Texture2D>& texture, const Vec4 & tint, Float tilingFactor)
     {
         if (s_BatchData.IndexCount >= MAX_INDICES || s_BatchData.TextureSlotIndex >= MAX_TEXTURE_SLOTS) {
             Restart();
@@ -307,7 +307,7 @@ namespace TE::Renderer
         s_BatchData.RenderingStatus.QuadCount++;
     }
 
-    void BatchRenderer2D::DrawQuad(const Mat4& transform, const Ref<SubTexture2D>& texture, const Vec4& tint, Float tilingFactor)
+    void Renderer2D::DrawQuad(const Mat4& transform, const Ref<SubTexture2D>& texture, const Vec4& tint, Float tilingFactor)
     {
         if (s_BatchData.IndexCount >= MAX_INDICES || s_BatchData.TextureSlotIndex >= MAX_TEXTURE_SLOTS) 
         {
@@ -348,12 +348,12 @@ namespace TE::Renderer
         s_BatchData.RenderingStatus.QuadCount++;
     }
 
-    const BatchRenderer2D::Status& BatchRenderer2D::RenderingStatus()
+    const Renderer2D::Status& Renderer2D::RenderingStatus()
     {
         return s_BatchData.RenderingStatus;
     }
 
-    void BatchRenderer2D::StatusReset()
+    void Renderer2D::StatusReset()
     {
         s_BatchData.RenderingStatus.DrawCount = TE_NULL;
         s_BatchData.RenderingStatus.QuadCount = TE_NULL;

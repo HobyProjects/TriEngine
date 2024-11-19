@@ -14,11 +14,11 @@
 
 namespace TE::Renderer
 {
-    class BatchRenderer2D
+    class Renderer2D
     {
         private:
-            BatchRenderer2D() = default;
-            ~BatchRenderer2D() = default;
+            Renderer2D() = default;
+            ~Renderer2D() = default;
 
             static void Restart();
 
