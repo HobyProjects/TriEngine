@@ -23,15 +23,21 @@ namespace TE::Camera
 
         private:
             Boolean OnMouseWheelEvent(TE::Events::MouseScrollEvent& event);
+            Boolean OnMouseCursorPosChangeEvent(TE::Events::MouseCursorPosChangeEvent& event);
             Boolean OnWindowResizeEvent(TE::Events::AppWindowResizeEvent& event);
 
         private:
-            TE::Renderer::Camera3D m_Camera3D;
-            TE::Renderer::CameraBounds m_Bounds;
+            TE::Renderer::Camera3D m_Camera;
 
             Float m_ZoomLevel{1.0f};
             Float m_TranslationSpeed{100.0f};
+
+            Double m_MouseY{0.0};
+            Double m_MouseX{0.0};
             Float m_Sensitivity{10.0f};
+
+            UInt32 m_WindowWidth{0};
+            UInt32 m_WindowHeight{0};
 
             Ref<TE::Events::InputHandler> m_InputHandler;
     };

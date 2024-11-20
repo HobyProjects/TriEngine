@@ -18,7 +18,7 @@ typedef unsigned short              UInt16;
 typedef unsigned char               UInt8;         
 typedef char                        Int8;         
 typedef float                       Float;         
-typedef double                      Float64;       
+typedef double                      Double;       
 typedef std::string                 String;        
 typedef const char*                 CString;       
 typedef bool                        Boolean;      
