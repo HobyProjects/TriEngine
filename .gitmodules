@@ -23,3 +23,6 @@
 [submodule "Vendors/yaml-cpp"]
 	path = Vendors/yaml-cpp
 	url = https://github.com/jbeder/yaml-cpp.git
+[submodule "Vendors/SDL"]
+	path = Vendors/SDL
+	url = https://github.com/libsdl-org/SDL.git
