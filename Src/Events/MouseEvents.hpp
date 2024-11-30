@@ -44,35 +44,35 @@ namespace TE::Events
     class MouseCursorPosChangeEvent : public Event
     {
         public:
-            MouseCursorPosChangeEvent(Float64 posX, Float64 posY) : m_PosX(posX), m_PosY(posY) {}
+            MouseCursorPosChangeEvent(Double posX, Double posY) : m_PosX(posX), m_PosY(posY) {}
             virtual ~MouseCursorPosChangeEvent() = default;
 
-            Float64 GetMousePosX() const { return m_PosX; }
-            Float64 GetMousePosY() const { return m_PosY; }
+            Double GetMousePosX() const { return m_PosX; }
+            Double GetMousePosY() const { return m_PosY; }
 
             EVENT_CLASS_CATEGORY(EventCategory::Mouse);
             EVENT_CLASS_TYPE(EventType::MouseCursorPosChangeEvent)
 
         private:
-            Float64 m_PosX;
-            Float64 m_PosY;
+            Double m_PosX;
+            Double m_PosY;
     };
 
     class MouseScrollEvent : public Event
     {
         public:
-            MouseScrollEvent(Float64 offsetX, Float64 offsetY) : m_OffsetX(offsetX), m_OffsetY(offsetY) {}
+            MouseScrollEvent(Double offsetX, Double offsetY) : m_OffsetX(offsetX), m_OffsetY(offsetY) {}
             virtual ~MouseScrollEvent() = default;
 
-            Float64 GetMouseScrollOffsetX() const { return m_OffsetX; }
-            Float64 GetMouseScrollOffsetY() const { return m_OffsetY; }
+            Double GetMouseScrollOffsetX() const { return m_OffsetX; }
+            Double GetMouseScrollOffsetY() const { return m_OffsetY; }
 
             EVENT_CLASS_CATEGORY(EventCategory::Mouse);
             EVENT_CLASS_TYPE(EventType::MouseWheelEvent);
 
         private:
-            Float64 m_OffsetX;
-            Float64 m_OffsetY;
+            Double m_OffsetX;
+            Double m_OffsetY;
     };
 
     class MouseCursorEnterEvent : public Event
