@@ -46,7 +46,7 @@ namespace TE::Core
         {
             case ServiceAPIs::API_GLFW:             return CreateRef<TE::APIs::GLFW::GLFWAPI_Window>(title);
             case ServiceAPIs::API_SDL:              TRIMANA_ASSERT(TE_FALSE, "SDL is not supported yet!");
-            case ServiceAPIs::API_WIN32:            TRIMANA_ASSERT(TE_FALSE, "None is not supported yet!");
+            case ServiceAPIs::API_WIN32:            TRIMANA_ASSERT(TE_FALSE, "Win32 is not supported yet!");
             default:                                return nullptr;
         }
     };

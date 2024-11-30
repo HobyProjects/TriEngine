@@ -1,4 +1,5 @@
 #include "GLFW_Window.hpp"
+#include "Renderer.hpp"
 
 namespace TE::APIs::GLFW
 {
@@ -20,7 +21,6 @@ namespace TE::APIs::GLFW
 
     GLFWAPI_Window::GLFWAPI_Window(const String& title)
     {
-        TE_CORE_INFO("GLFW: Initialized");
         const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
         if(mode != nullptr)
         {

@@ -1,4 +1,4 @@
-#include "BatchRenderer2D.hpp"
+#include "Renderer2D.hpp"
 
 namespace TE::Renderer
 {

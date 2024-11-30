@@ -233,9 +233,10 @@ if __name__ == "__main__":
         PreCompileLibraries("glm", "Vendors/glm", "Vendors/build/config/glm", "Vendors/build/packages/glm", ""),
         PreCompileLibraries("entt", "Vendors/entt", "Vendors/build/config/entt", "Vendors/build/packages/entt", ""),
         PreCompileLibraries("imgui", "Vendors/imgui_docking", "Vendors/build/config/imgui", "Vendors/build/packages/imgui", ""),
-        PreCompileLibraries("imguizmo", "Vendors/ImGuizmo", "Vendors/build/config/imguizmo", "Vendors/build/packages/imguizmo", ""),
+        #PreCompileLibraries("imguizmo", "Vendors/ImGuizmo", "Vendors/build/config/imguizmo", "Vendors/build/packages/imguizmo", ""),
         PreCompileLibraries("stb", "Vendors/stb_image", "Vendors/build/config/stb", "Vendors/build/packages/stb", ""),
-        PreCompileLibraries("yaml", "Vendors/yaml-cpp", "Vendors/build/config/yaml", "Vendors/build/packages/yaml", "-DYAML_BUILD_SHARED_LIBS=OFF")
+        PreCompileLibraries("yaml", "Vendors/yaml-cpp", "Vendors/build/config/yaml", "Vendors/build/packages/yaml", "-DYAML_BUILD_SHARED_LIBS=OFF"),
+        PreCompileLibraries("SDL", "Vendors/SDL", "Vendors/build/config/SDL", "Vendors/build/packages/SDL", "-DSDL_SHARED=OFF -DSDL_STATIC=ON -DSDL_TESTS=OFF")
     ]
 
 #============================================================================================================================================

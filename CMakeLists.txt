@@ -7,9 +7,10 @@ find_package(glm REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(EnTT REQUIRED)
 find_package(imgui REQUIRED)
-find_package(imguizmo REQUIRED)
+#find_package(imguizmo REQUIRED)
 find_package(stb REQUIRED)
 find_package(yaml-cpp REQUIRED)
+find_package(SDL3 REQUIRED)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -86,6 +87,10 @@ set(
         ${TE_SRC_DIR}/APIs/GLFW/GLFW_EventsReceiver.hpp
         ${TE_SRC_DIR}/APIs/GLFW/GLFW_InputHandler.hpp
 
+        # APIs - SDL
+        ${TE_SRC_DIR}/APIs/SDL/SDL.hpp
+        ${TE_SRC_DIR}/APIs/SDL/SDL_Window.hpp
+
         # Renderer
         ${TE_SRC_DIR}/Renderer/Renderer.hpp
         ${TE_SRC_DIR}/Renderer/Renderer2D.hpp
@@ -137,6 +142,9 @@ set(
         ${TE_SRC_DIR}/APIs/GLFW/GLFW_EventsReceiver.cpp
         ${TE_SRC_DIR}/APIs/GLFW/GLFW_InputHandler.cpp
 
+        # APIs - SDL
+        ${TE_SRC_DIR}/APIs/SDL/SDL_Window.cpp
+
         # Renderer
         ${TE_SRC_DIR}/Renderer/Renderer.cpp
         ${TE_SRC_DIR}/Renderer/Renderer2D.cpp
@@ -176,9 +184,10 @@ target_link_libraries(
 			glm::glm
 			EnTT::EnTT
 			imgui::imgui
-            imguizmo::imguizmo
+            #imguizmo::imguizmo
 			stb::stb
 			yaml-cpp::yaml-cpp
+            SDL3::SDL3
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${TRIMANA_INCLUDE_DIRECTORIES})
